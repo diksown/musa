@@ -1,0 +1,2 @@
+# musa
+Inspiration generator
