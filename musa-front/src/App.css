@@ -2,7 +2,6 @@
 
 .App {
   text-align: center;
-  background-image: linear-gradient(to top right, #aae786, #7a95f4);
   min-height: 100vh;
   flex-direction: column;
   font-size: 20px;
@@ -31,7 +30,7 @@
   font-family: "Rubik";
 }
 
-.ContentCard {
+.DescriptionCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,28 +43,25 @@
 }
 
 .ActionBar {
-  font-size: 35px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
 }
 
+.Icon {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
 .RefreshButton {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
   color: #dfdfeb;
   background-color: #1b1c1d;
   border-radius: 20px;
   flex-grow: 1;
-  margin: 0 10px;
+  margin: 10px 10px;
   padding: 5px;
 }
-
-/* .App-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
