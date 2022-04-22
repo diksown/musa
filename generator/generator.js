@@ -14,7 +14,7 @@ let createSentence = async (noun) => {
 };
 
 let createTitle = async (noun) => {
-  const prompt = `give me 3 funny and creative names about a project involving ${noun}\n`;
+  const prompt = `give me 3 cool and quirky names about a project involving ${noun}\n`;
   const maxTitleSize = 64;
   return await getApiResponse(prompt, maxTitleSize);
 };
