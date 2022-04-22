@@ -3,5 +3,8 @@
   "dependencies": {
     "node-fetch": "^3.2.3",
     "openai": "^2.0.5"
+  },
+  "scripts": {
+    "start": "node generator.js"
   }
 }
