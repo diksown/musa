@@ -46,7 +46,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px;
 }
 
 .Icon {
@@ -56,7 +55,6 @@
 }
 
 .RefreshButton {
-  font-size: 18px;
   font-weight: 600;
   color: #dfdfeb;
   background-color: #1b1c1d;

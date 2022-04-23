@@ -2,7 +2,7 @@ import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faker } from "@faker-js/faker";
+import { projects } from "./static/projects";
 
 let ActionBar = () => {
   return (
@@ -60,9 +60,11 @@ let generateGradient = () => {
 };
 
 let mockGenerateProject = () => {
+  let randomIndex = Math.floor(Math.random() * projects.length);
+  let project = projects[randomIndex];
   return {
-    title: faker.lorem.sentences(3, "\n"),
-    description: faker.lorem.paragraph(10),
+    title: project.titles,
+    description: project.description,
     gradient: generateGradient(),
   };
 };
