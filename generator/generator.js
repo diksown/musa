@@ -18,26 +18,39 @@ let generateTitle = async (word) => {
   return await getApiResponse(prompt, maxTitleSize);
 };
 
+let generateProjectFragment = async (word, fragmentType) => {
+  let optionsSwitch = {
+    title: {
+      maxTokens: 64,
+      prompt: `give me 3 cool, fun and quirky names about a project involving ${word}. display them in a numbered list (1. 2. 3., etc), one per line.\n`,
+    },
+    description: {
+      maxTokens: 128,
+      prompt: `give me an ideia to a creative programming project about ${word}\n`,
+    },
+  };
+  let option = optionsSwitch[fragmentType];
+  if (option) {
+    return await getApiResponse(option.prompt, option.maxTokens);
+  }
+};
+
 let generateProject = async (word) => {
-  let title = await generateTitle(word);
-  let sentence = await generateSentence(word);
+  let [title, description] = await Promise.all([
+    generateProjectFragment(word, "title"),
+    generateProjectFragment(word, "description"),
+  ]);
+  let [CFTitle, CFDescription] = await Promise.all([
+    contentFilter(title),
+    contentFilter(description),
+  ]);
   return {
     word: word,
     title: title,
-    description: sentence,
+    description: description,
+    CFTitle: CFTitle,
+    CFDescription: CFDescription,
   };
-};
-
-let showProject = (project) => {
-  console.log(project.word + "\n");
-  console.log(project.title + "\n");
-  console.log(project.description + "\n");
-  console.log("===========================");
-};
-
-let getAndShow = async (word) => {
-  let project = await generateProject(word);
-  showProject(project);
 };
 
 let openAndAppend = async (filePath, query) => {
@@ -73,7 +86,6 @@ let openaiCompletionWrapper = async (model, data) => {
 };
 
 let getApiResponse = async (sentence, maxTokens = 64) => {
-  // TODO: check if the response is appropriate
   const response = await openaiCompletionWrapper("text-davinci-002", {
     prompt: sentence,
     temperature: 1,
@@ -86,9 +98,8 @@ let getApiResponse = async (sentence, maxTokens = 64) => {
 };
 
 // 0 - The text is safe.
-// 1 - This text is sensitive. This means that the text could be talking about a sensitive topic, something political, religious, or talking about a protected class such as race or nationality.
-// 2 - This text is unsafe. This means that the text contains profane language, prejudiced or hateful language, something that could be NSFW, or text that portrays certain groups/people in a harmful manner.
-// (https://beta.openai.com/docs/engines/content-filter)
+// 1 - This text is sensitive.
+// 2 - This text is unsafe.
 let contentFilter = async (contentToClassify) => {
   const response = await openaiCompletionWrapper("content-filter-alpha", {
     prompt: "<|endoftext|>" + contentToClassify + "\n--\nLabel:",
@@ -121,13 +132,32 @@ let contentFilter = async (contentToClassify) => {
     outputLabel = "2";
   }
 
-  return outputLabel;
+  return parseInt(outputLabel);
 };
 
-let getCompleteApiResponse = async (sentence, maxTokens = 64) => {
-  let response = await getApiResponse(sentence, maxTokens);
-};
+class WordGenerator {
+  async init() {
+    let file = await fs.promises.readFile("../data/nounlist.csv", "utf8");
+    let words = file.split("\n");
+    this.words = words;
+  }
+  getRandomWord() {
+    let index = Math.floor(Math.random() * this.words.length);
+    return this.words[index];
+  }
+  getWords() {
+    return this.words;
+  }
+}
 
-let main = async () => {};
+let main = async () => {
+  // Initialize the word generator
+  let wordGen = new WordGenerator();
+  await wordGen.init();
+
+  let word = wordGen.getRandomWord();
+  let project = await generateProject(word);
+  console.log(project);
+};
 
 main();
