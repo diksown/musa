@@ -1,26 +1,15 @@
 import fs from "fs";
 import { Configuration, OpenAIApi } from "openai";
+import shuffle from "knuth-shuffle-seeded";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
-let generateSentence = async (word) => {
-  const prompt = `give me an ideia to a creative programming project about ${word}\n`;
-  const maxSentenceSize = 128;
-  return await getApiResponse(prompt, maxSentenceSize);
-};
-
-let generateTitle = async (word) => {
-  const prompt = `give me 3 cool, fun and quirky names about a project involving ${word}. display them in a numbered list (1. 2. 3., etc), one per line.\n`;
-  const maxTitleSize = 64;
-  return await getApiResponse(prompt, maxTitleSize);
-};
-
 let generateProjectFragment = async (word, fragmentType) => {
   let optionsSwitch = {
-    title: {
+    titles: {
       maxTokens: 64,
       prompt: `give me 3 cool, fun and quirky names about a project involving ${word}. display them in a numbered list (1. 2. 3., etc), one per line.\n`,
     },
@@ -36,27 +25,36 @@ let generateProjectFragment = async (word, fragmentType) => {
 };
 
 let generateProject = async (word) => {
-  let [title, description] = await Promise.all([
-    generateProjectFragment(word, "title"),
+  // TODO: This can be optimized to save credits.
+  // First, check titles and see the value of the content filter.
+  // If it's safe, then we can generate the description.
+  // Otherwise, we discard this project.
+  let [titles, description] = await Promise.all([
+    generateProjectFragment(word, "titles"),
     generateProjectFragment(word, "description"),
   ]);
-  let [CFTitle, CFDescription] = await Promise.all([
-    contentFilter(title),
+  let [CFtitles, CFDescription] = await Promise.all([
+    contentFilter(titles),
     contentFilter(description),
   ]);
   return {
     word: word,
-    title: title,
+    titles: titles,
     description: description,
-    CFTitle: CFTitle,
+    CFtitles: CFtitles,
     CFDescription: CFDescription,
   };
 };
 
-let openAndAppend = async (filePath, query) => {
+let openAndAppend = async (filePath, query, property = "data") => {
   let file = await fs.promises.readFile(filePath);
   let json = JSON.parse(file);
-  json.data.push(query);
+  // Check if query is an array
+  if (Array.isArray(query)) {
+    json[property].push(...query);
+  } else {
+    json[property].push(query);
+  }
   await fs.promises.writeFile(filePath, JSON.stringify(json, null, 2));
 };
 
@@ -81,7 +79,7 @@ let saveQuery = async (response) => {
 // (because queries cost $, so I want to save them)
 let openaiCompletionWrapper = async (model, data) => {
   const response = await openai.createCompletion(model, data);
-  await saveQuery(response);
+  //await saveQuery(response);
   return response;
 };
 
@@ -139,25 +137,75 @@ class WordGenerator {
   async init() {
     let file = await fs.promises.readFile("../data/nounlist.csv", "utf8");
     let words = file.split("\n");
+    words.sort();
     this.words = words;
   }
+
+  getWords() {
+    return this.words;
+  }
+
+  // TODO: Ensure reproducibility.
   getRandomWord() {
     let index = Math.floor(Math.random() * this.words.length);
     return this.words[index];
   }
-  getWords() {
-    return this.words;
+
+  getRandomizedWords() {
+    let words = [...this.words];
+    shuffle(words);
+    return words;
   }
 }
 
-let main = async () => {
-  // Initialize the word generator
-  let wordGen = new WordGenerator();
-  await wordGen.init();
+// Workaround to init the word generator
+let getWordGenerator = async () => {
+  let wordGenerator = new WordGenerator();
+  await wordGenerator.init();
+  return wordGenerator;
+};
 
-  let word = wordGen.getRandomWord();
-  let project = await generateProject(word);
-  console.log(project);
+let parseProject = (project) => {
+  // Remove duplicated \n's, remove "'s
+  let parsedTitles = project.titles.replace(/\n+/g, "\n").replace(/'/g, "");
+  return {
+    word: project.word,
+    titles: parsedTitles,
+    description: project.description,
+  };
+};
+
+let saveProjects = async (projects) => {
+  openAndAppend("../data/projects.json", projects);
+};
+
+// Generate projects and automatically filter them
+let generateBundleProjects = async (numberOfProjects = 5) => {
+  let wordGen = await getWordGenerator();
+  let words = wordGen.getRandomizedWords();
+  // Paralellized.
+  // TODO: Solve async problems with logging
+  let projectPromiseList = [];
+  for (let i = 0; i < numberOfProjects; i++) {
+    let word = words[i];
+    projectPromiseList.push(generateProject(word));
+  }
+  let projectList = await Promise.all(projectPromiseList);
+  let filteredProjectList = projectList.filter((project) => {
+    let threshold = 0; // Let's play it safe.
+    return project.CFtitles <= threshold && project.CFDescription <= threshold;
+  });
+  let parsedProjects = filteredProjectList.map((project) => {
+    return parseProject(project);
+  });
+  return parsedProjects;
+};
+
+let main = async () => {
+  let numberOfProjects = 1;
+  let projectList = await generateBundleProjects(numberOfProjects);
+  console.log(projectList);
+  saveProjects(projectList);
 };
 
 main();
