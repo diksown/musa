@@ -7,6 +7,9 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+let simpleEntries = [];
+let dirtyEntries = [];
+
 let generateProjectFragment = async (word, fragmentType) => {
   let optionsSwitch = {
     titles: {
@@ -72,15 +75,15 @@ let saveQuery = async (response) => {
     data: rawData,
   };
 
-  await openAndAppend("../logs/simpleLog.json", simpleEntry);
-  await openAndAppend("../logs/dirtyLog.json", dirtyEntry);
+  simpleEntries.push(simpleEntry);
+  dirtyEntries.push(dirtyEntry);
 };
 
 // wrapper function around openai api to log all results
 // (because queries cost $, so I want to save them)
 let openaiCompletionWrapper = async (model, data) => {
   const response = await openai.createCompletion(model, data);
-  //await saveQuery(response);
+  await saveQuery(response);
   return response;
 };
 
@@ -203,10 +206,19 @@ let generateBundleProjects = async (numberOfProjects = 5) => {
 };
 
 let main = async () => {
-  let numberOfProjects = 1;
-  let projectList = await generateBundleProjects(numberOfProjects);
-  console.log(projectList);
-  saveProjects(projectList);
+  try {
+    let numberOfProjects = 1;
+    let projectList = await generateBundleProjects(numberOfProjects);
+    console.log(projectList);
+    saveProjects(projectList);
+  } catch (e) {
+    console.log(e);
+  } finally {
+    console.log("Done");
+    // Log results
+    await openAndAppend("../logs/simpleLog.json", simpleEntries);
+    await openAndAppend("../logs/dirtyLog.json", dirtyEntries);
+  }
 };
 
 main();

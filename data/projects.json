@@ -54,6 +54,26 @@
       "word": "cursor",
       "titles": "1. pointer\n2. blinky\n3. mousey",
       "description": "Design a cursor that changes color or shape when it hovers over certain elements on a webpage."
+    },
+    {
+      "word": "dock",
+      "titles": "1. Dockside\n2. The Docks\n3. Dock Street",
+      "description": "Dock is an area where ships and boats can be Moored. It is typically located in a harbor, although it can also be located on a river or lake. A dock may include one or more piers, or slipways.\n\nA creative programming project about dock could include creating a virtual dock where users can moor their ships and boats. The dock could include features such as a slipway, piers, and a harbor. Users would be able to navigate their ships and boats around the dock, and interact with other users."
+    },
+    {
+      "word": "vampire",
+      "titles": "1. Vampires are Alive and Well!\n2. Stake 'Em and Shake 'Em!\n3. The Great Vampire Hunt of 1234!",
+      "description": "One possible creative programming project about vampires could involve creating a game in which the player must help a vampire character escape from a group of angry villagers. The game could be set up like a platformer, with the player controlling the vampire as they jump and climb their way to safety. Alternatively, the player could be tasked with helping the vampire find victims to feed on, and avoiding capture by the authorities."
+    },
+    {
+      "word": "ashram",
+      "titles": "1. Agni's Ashram\n2. Surya's Ashram\n3. Chandra's Ashram",
+      "description": "Design a program that helps manage an ashram. The program should track information about the ashram's residents, visitors, staff, and facilities. It should also provide features for scheduling events and managing resources."
+    },
+    {
+      "word": "rose",
+      "titles": "1. Rose xyz\n2. yzr\n3. rse",
+      "description": "Design a program that generates a virtual rose garden. Users can add different types of roses, watering them andwatching them grow."
     }
   ]
 }
