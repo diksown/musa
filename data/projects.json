@@ -39,6 +39,21 @@
     {
       "titles": "researchers\n\n1. \"The Lab Rats\"\n2. \"The Mad Scientists\"\n3. \"The Brainiacs\"",
       "description": "A code project about scientific research could involve building a system that helps manage and organize data from experiments. This could include features for inputting data, storing data, and conducting analysis on the data. The project could also include a user interface that allows users to visual data and results from the scientific research."
+    },
+    {
+      "word": "reef",
+      "titles": "1. \"Reef Aid\"\n2. \"Reef-o-matic\"\n3. \"Reef Revival\"",
+      "description": "A reef is a underwater ecosystem that is home to a variety of animals and plants. A creative programming project about reef could focus on simulating the ecology of a reef system. The project could include modeling the movement of fish, the growth of coral, and the interaction of the different species in the ecosystem."
+    },
+    {
+      "word": "aircraft",
+      "titles": "1. Aces High\n2. Soaring Feats\n3. Winging It",
+      "description": "Design a program that can control a model aircraft. The program should be able to take inputs from a joystick or other controller and use them to control the servo motors that move the aircraft's control surfaces."
+    },
+    {
+      "word": "cursor",
+      "titles": "1. pointer\n2. blinky\n3. mousey",
+      "description": "Design a cursor that changes color or shape when it hovers over certain elements on a webpage."
     }
   ]
 }

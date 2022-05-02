@@ -47,6 +47,7 @@ let generateProject = async (word) => {
 };
 
 let openAndAppend = async (filePath, query, property = "data") => {
+  // TODO: Check if path exists, if has `property` etc etc etc...
   let file = await fs.promises.readFile(filePath);
   let json = JSON.parse(file);
   // Check if query is an array
@@ -71,8 +72,8 @@ let saveQuery = async (response) => {
     data: rawData,
   };
 
-  await openAndAppend("../data/simpleLog.json", simpleEntry);
-  await openAndAppend("../data/dirtyLog.json", dirtyEntry);
+  await openAndAppend("../logs/simpleLog.json", simpleEntry);
+  await openAndAppend("../logs/dirtyLog.json", dirtyEntry);
 };
 
 // wrapper function around openai api to log all results
@@ -167,7 +168,7 @@ let getWordGenerator = async () => {
 
 let parseProject = (project) => {
   // Remove duplicated \n's, remove "'s
-  let parsedTitles = project.titles.replace(/\n+/g, "\n").replace(/'/g, "");
+  let parsedTitles = project.titles.replace(/\n+/g, "\n").replace(/"/g, "");
   return {
     word: project.word,
     titles: parsedTitles,
