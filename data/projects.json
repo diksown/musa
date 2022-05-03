@@ -484,6 +484,31 @@
       "word": "rubber",
       "titles": "Elasticity\nBouncing\nRubberband",
       "description": "A program that calculates the amount of rubber needed to produce a certain number of rubber products."
+    },
+    {
+      "word": "processor",
+      "titles": "1. Brew Processor\n2. Wine Processor\n3. Beer Processor",
+      "description": "Design a basic chess AI that can beat a beginner player."
+    },
+    {
+      "word": "centre",
+      "titles": "1. The Quirky Centre\n2. Cool Centre\n3. Fun Centre",
+      "description": "Design a program that helps people find their ideal center. The program could include a quiz that asks questions about what the person is looking for in a center, and then provides a list of potential centers that match the person's needs."
+    },
+    {
+      "word": "swivel",
+      "titles": "1. Spin doctor\n2. Swivel stick\n3. Swivel hips",
+      "description": "A program that allows users to design and simulate custom roller coaster tracks."
+    },
+    {
+      "word": "muscatel",
+      "titles": "1. Muscatel: The Musical!\n2. Muscatel: The Movie!\n3. Muscatel: The TV Show!",
+      "description": "Design a program that can generate a random Muscatel grape flavor profile. Include information on the type of Muscatel grape, primary flavors, secondary flavors, and descriptors."
+    },
+    {
+      "word": "shoe-horn",
+      "titles": "1. Sole Mates: A Shoe-Horn Love Story \n2. The Shoe-Horn Chronicles \n3. A Shoe-Horn Odyssey",
+      "description": "Design a program that can take an input of a person's foot measurements and generate a list of shoe styles and sizes that would fit them."
     }
   ]
 }
