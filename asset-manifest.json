@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/musa/static/css/main.1cc169e5.css",
+    "main.js": "/musa/static/js/main.f23ea9dd.js",
+    "index.html": "/musa/index.html",
+    "main.1cc169e5.css.map": "/musa/static/css/main.1cc169e5.css.map",
+    "main.f23ea9dd.js.map": "/musa/static/js/main.f23ea9dd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1cc169e5.css",
+    "static/js/main.f23ea9dd.js"
+  ]
+}
