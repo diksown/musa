@@ -11,15 +11,32 @@
 }
 
 .MainCard {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  background-color: #f1f1f5;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  margin: auto 20px;
 }
 
 .SpacedText {
   white-space: pre-line;
 }
 
-.ProjectTitle {
-  margin: 20px;
+.TopBar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ProjectTitles {
+  margin: 0px 10px 20px 10px;
   font-size: 24px;
   font-weight: 900;
 }
@@ -30,26 +47,8 @@
   font-family: "Rubik";
 }
 
-.DescriptionCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 700px;
-  background-color: #f1f1f5;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  padding: 20px;
-}
-
-.ActionBar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .Icon {
-  font-size: 30px;
+  font-size: 40px;
   display: flex;
   align-items: center;
 }
@@ -59,7 +58,11 @@
   color: #dfdfeb;
   background-color: #1b1c1d;
   border-radius: 20px;
-  flex-grow: 1;
-  margin: 10px 10px;
+  margin: 15px;
   padding: 5px;
+}
+
+.FooterInfo {
+  font-size: 16px;
+  margin: 10px;
 }
