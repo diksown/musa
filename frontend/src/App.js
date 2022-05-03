@@ -1,6 +1,6 @@
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
+import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { projects } from "./static/projects";
 
@@ -37,9 +37,9 @@ let MainCard = ({ titles, description }) => {
 
 let RefreshButton = () => {
   return (
-    <div className="RefreshButton">
-      <a href="">Give me a new idea!</a>
-    </div>
+    <a className="RefreshButton" href=".">
+      Give me a new idea!
+    </a>
   );
 };
 
@@ -95,7 +95,9 @@ let App = () => {
         background: `linear-gradient(to top right, ${gradient.color1}, ${gradient.color2})`,
       }}
     >
-      <MainCard titles={titles} description={description} />
+      <div className="MainCardWrapper">
+        <MainCard titles={titles} description={description} />
+      </div>
       <Footer />
     </div>
   );
