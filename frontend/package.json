@@ -1,7 +1,7 @@
 {
   "name": "musa-frontend",
   "version": "0.1.0",
-  "homepage": "https://diksown.github.io/musa",
+  "homepage": "https://musa.dikson.xyz",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
