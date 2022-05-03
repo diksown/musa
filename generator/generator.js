@@ -1,6 +1,7 @@
 import fs from "fs";
 import { Configuration, OpenAIApi } from "openai";
 import shuffle from "knuth-shuffle-seeded";
+import chalk from "chalk";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -183,8 +184,22 @@ let saveProjects = async (projects) => {
   openAndAppend("../data/projects.json", projects);
 };
 
+function sleep(time = 1000) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 // Generate projects and automatically filter them
 let generateBundleProjects = async (numberOfProjects = 5) => {
+  if (numberOfProjects > 20) {
+    console.log(
+      chalk.bgRed.bold(
+        `This will generate ${numberOfProjects} projects... Hit Ctrl+C to stop.`
+      )
+    );
+    await sleep(5000);
+  }
+  console.log(chalk.blue("Generating projects..."));
+  await sleep(1000);
   let wordGen = await getWordGenerator();
   let words = wordGen.getRandomizedWords();
   // Paralellized.
@@ -207,7 +222,7 @@ let generateBundleProjects = async (numberOfProjects = 5) => {
 
 let main = async () => {
   try {
-    let numberOfProjects = 1;
+    let numberOfProjects = 5;
     let projectList = await generateBundleProjects(numberOfProjects);
     console.log(projectList);
     saveProjects(projectList);
