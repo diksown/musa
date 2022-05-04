@@ -1,4 +1,4 @@
-export const projects = [
+const projects = [
   {
     word: "aircraft",
     titles: "1. Aces High\n2. Soaring Feats\n3. Winging It",
@@ -611,3 +611,5 @@ export const projects = [
       "A program that calculates the amount of rubber needed to produce a certain number of rubber products.",
   },
 ];
+
+export default projects;
