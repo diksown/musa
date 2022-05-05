@@ -16,7 +16,7 @@
 
 .PresentationTitle {
   margin: 50px 10px 20px;
-  font-size: calc(15px + 2vw);
+  font-size: max(calc(15px + 2.2vw), 30px);
   font-weight: 800;
 }
 
