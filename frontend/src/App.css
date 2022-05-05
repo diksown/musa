@@ -6,4 +6,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(
+    to top right,
+    hsl(29deg 71% 63%) 0%,
+    hsl(349deg 97% 69%) 50%,
+    hsl(291deg 60% 59%) 100%
+  );
 }

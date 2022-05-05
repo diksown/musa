@@ -19,19 +19,19 @@ const GithubButton = () => {
   );
 };
 
-const RefreshButton = () => {
+const RefreshButton = ({ notifyClick }) => {
   return (
-    <button className="RefreshButton" onClick={() => window.location.reload()}>
+    <button className="RefreshButton" onClick={() => notifyClick({})}>
       Generate
     </button>
   );
 };
 
-const Navbar = () => {
+const Navbar = ({ notifyClick }) => {
   return (
     <div className="Navbar">
       <MusaLogo />
-      <RefreshButton />
+      <RefreshButton notifyClick={notifyClick} />
       <GithubButton />
     </div>
   );

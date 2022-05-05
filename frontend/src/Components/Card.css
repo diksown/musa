@@ -14,6 +14,29 @@
   font-family: "Rubik";
 }
 
+.PresentationTitle {
+  margin: 50px 30px 20px;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.PresentationDescription {
+  margin: 20px;
+  font-size: 20px;
+  font-family: "Rubik";
+}
+
+.GradientHighlight {
+  background-image: linear-gradient(
+    45deg,
+    hsl(212deg 78% 52%) 0%,
+    hsl(253deg 79% 69%) 50%,
+    hsl(297deg 69% 60%) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
 .MainCardWrapper {
   margin: auto 0;
   padding: 15px;
@@ -28,5 +51,5 @@
   background-color: #f1f1f5;
   border-radius: 20px;
   box-shadow: 4px 6px 10px 4px rgba(0, 0, 0, 0.25);
-  padding: 10px;
+  padding: 30px;
 }

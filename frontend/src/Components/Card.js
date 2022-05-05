@@ -40,13 +40,45 @@ const ProjectDescription = ({ description }) => {
   return <div className="ProjectDescription SpacedText">{description}</div>;
 };
 
-const Card = () => {
+const Project = () => {
   const { titles, description } = mockGenerateProject();
+  return (
+    <>
+      <ProjectTitle titles={titles} />
+      <ProjectDescription description={description} />
+    </>
+  );
+};
+
+const Presentation = () => {
+  return (
+    <>
+      <div className="PresentationTitle">
+        Let <span className="GradientHighlight">Artificial Intelligence </span>
+        choose your next programming project 🚀
+      </div>
+      <div className="PresentationDescription">
+        Musa is a generator of coding project ideas powered by GPT3, a ML model
+        that produces human-like text. This project is open source and the code
+        is available on GitHub. To see a project, click the Generate button!
+      </div>
+    </>
+  );
+};
+
+const CardContent = ({ currentState }) => {
+  if (currentState === 0) {
+    return <Presentation />;
+  } else {
+    return <Project />;
+  }
+};
+
+const Card = ({ currentState }) => {
   return (
     <div className="MainCardWrapper">
       <div className="MainCard">
-        <ProjectTitle titles={titles} />
-        <ProjectDescription description={description} />
+        <CardContent currentState={currentState} />
       </div>
     </div>
   );
