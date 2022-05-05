@@ -3,15 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-let Logo = () => {
+const MusaLogo = () => {
   return (
-    <div className="Icon InfoButton">
+    <div className="Icon">
       <FontAwesomeIcon icon={faFaceSmile} />
     </div>
   );
 };
 
-let GithubButton = () => {
+const GithubButton = () => {
   return (
     <div className="Icon GithubButton">
       <FontAwesomeIcon icon={faGithub} />
@@ -19,7 +19,7 @@ let GithubButton = () => {
   );
 };
 
-let RefreshButton = () => {
+const RefreshButton = () => {
   return (
     <button className="RefreshButton" onClick={() => window.location.reload()}>
       Generate
@@ -27,10 +27,10 @@ let RefreshButton = () => {
   );
 };
 
-let Navbar = () => {
+const Navbar = () => {
   return (
     <div className="Navbar">
-      <Logo />
+      <MusaLogo />
       <RefreshButton />
       <GithubButton />
     </div>

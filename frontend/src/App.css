@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Rubik&display=swap");
-
 .App {
   text-align: center;
   height: 100%;
@@ -8,46 +6,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.SpacedText {
-  white-space: pre-line;
-}
-
-.NavBar {
-  display: flex;
-  justify-content: space-between;
-  margin: auto;
-}
-
-.ProjectTitles {
-  margin: 0px 10px 20px 10px;
-  font-size: 24px;
-  font-weight: 900;
-}
-
-.ProjectDescription {
-  margin: 20px;
-  font-size: 20px;
-  font-family: "Rubik";
-}
-
-.Icon {
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-}
-
-.RefreshButton {
-  font-weight: 600;
-  color: #dfdfeb;
-  background-color: #1b1c1d;
-  border-radius: 20px;
-  padding: 10px 40px;
-  box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.25);
-}
-
-.FooterInfo {
-  font-size: 16px;
-  margin: 20px 0px 10px;
 }

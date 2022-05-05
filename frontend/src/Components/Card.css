@@ -1,3 +1,19 @@
+.SpacedText {
+  white-space: pre-line;
+}
+
+.ProjectTitles {
+  margin: 0px 10px 20px 10px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.ProjectDescription {
+  margin: 20px;
+  font-size: 20px;
+  font-family: "Rubik";
+}
+
 .MainCardWrapper {
   margin: auto 0;
   padding: 15px;

@@ -1,30 +1,30 @@
 import "./Card.css";
 import projects from "../Static/projects.js";
 
-let genColor = (hue, saturation, lightness) => {
+const genColor = (hue, saturation, lightness) => {
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 };
 
-let generateGradient = () => {
-  let randomHue = Math.floor(Math.random() * 360);
-  let deltaHue = 70;
-  let saturation = 40;
-  let lightness = 60;
+const generateGradient = () => {
+  const randomHue = Math.floor(Math.random() * 360);
+  const deltaHue = 70;
+  const saturation = 40;
+  const lightness = 60;
   return {
     color1: genColor(randomHue, saturation, lightness),
     color2: genColor(randomHue + deltaHue, saturation, lightness),
   };
 };
 
-// let generateGradientProp = (color1, color2) => {
+// const generateGradientProp = (color1, color2) => {
 //   return {
 //     background: `linear-gradient(to top right, ${color1}, ${color2})`,
 //   };
 // };
 
-let mockGenerateProject = () => {
-  let randomIndex = Math.floor(Math.random() * projects.length);
-  let project = projects[randomIndex];
+const mockGenerateProject = () => {
+  const randomIndex = Math.floor(Math.random() * projects.length);
+  const project = projects[randomIndex];
   return {
     titles: project.titles,
     description: project.description,
@@ -32,16 +32,16 @@ let mockGenerateProject = () => {
   };
 };
 
-let ProjectTitle = ({ titles }) => {
+const ProjectTitle = ({ titles }) => {
   return <div className="ProjectTitles SpacedText">{titles}</div>;
 };
 
-let ProjectDescription = ({ description }) => {
+const ProjectDescription = ({ description }) => {
   return <div className="ProjectDescription SpacedText">{description}</div>;
 };
 
-let Card = () => {
-  let { titles, description } = mockGenerateProject();
+const Card = () => {
+  const { titles, description } = mockGenerateProject();
   return (
     <div className="MainCardWrapper">
       <div className="MainCard">
