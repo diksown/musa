@@ -1,13 +1,11 @@
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import MusaLogoImg from "../Assets/Images/musa_logo.png";
 
 const MusaLogo = () => {
   return (
-    <div className="Icon">
-      <FontAwesomeIcon icon={faFaceSmile} />
-    </div>
+    <img className="MusaLogo" src={MusaLogoImg} alt="Musa" height="50px" />
   );
 };
 

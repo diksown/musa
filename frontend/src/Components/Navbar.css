@@ -25,4 +25,5 @@
   border: none;
   cursor: pointer;
   outline: inherit;
+  align-self: end;
 }
