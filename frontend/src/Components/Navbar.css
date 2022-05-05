@@ -1,7 +1,11 @@
-.NavBar {
+.Navbar {
   display: flex;
+
+  width: 100%;
+  box-sizing: border-box;
   justify-content: space-between;
-  margin: auto;
+  padding: 10px;
+  /* margin: auto; */
 }
 
 .Icon {
@@ -11,10 +15,14 @@
 }
 
 .RefreshButton {
+  font-size: 20px;
   font-weight: 600;
   color: #dfdfeb;
   background-color: #1b1c1d;
   border-radius: 20px;
-  padding: 10px 40px;
+  padding: 10px 50px;
   box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.25);
+  border: none;
+  cursor: pointer;
+  outline: inherit;
 }

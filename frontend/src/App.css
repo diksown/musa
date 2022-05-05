@@ -1,4 +1,5 @@
 .App {
+  color: rgb(22, 22, 24);
   text-align: center;
   height: 100%;
   flex-direction: column;
@@ -7,9 +8,9 @@
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(
-    to top right,
-    hsl(29deg 71% 63%) 0%,
-    hsl(349deg 97% 69%) 50%,
-    hsl(291deg 60% 59%) 100%
+    45deg,
+    hsl(29deg 72% 75%) 0%,
+    hsl(353deg 100% 78%) 50%,
+    hsl(291deg 59% 68%) 100%
   );
 }
