@@ -14,11 +14,11 @@ let dirtyEntries = [];
 let generateProjectFragment = async (word, fragmentType) => {
   let optionsSwitch = {
     titles: {
-      maxTokens: 64,
+      maxTokens: 32,
       prompt: `give me 3 cool, fun and quirky names about a project involving ${word}. display them in a numbered list (1. 2. 3., etc), one per line.\n`,
     },
     description: {
-      maxTokens: 128,
+      maxTokens: 64,
       prompt: `give me an ideia to a creative programming project about ${word}\n`,
     },
   };

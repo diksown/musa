@@ -509,6 +509,31 @@
       "word": "shoe-horn",
       "titles": "1. Sole Mates: A Shoe-Horn Love Story \n2. The Shoe-Horn Chronicles \n3. A Shoe-Horn Odyssey",
       "description": "Design a program that can take an input of a person's foot measurements and generate a list of shoe styles and sizes that would fit them."
+    },
+    {
+      "word": "destiny",
+      "titles": "1. Fate of the Future\n2. Determining Destiny\n3. The Mysteries of Fate",
+      "description": "Design a choose-your-own-adventure game about destiny. In the game, the player would make choices that would affect their destiny. For example, the player could choose to be kind to others, and as a result, good things would happen to them. Or, the player could choose to be selfish"
+    },
+    {
+      "word": "smolt",
+      "titles": "Salmon Seizing\nSmolts in a Million\nKing of the Smolts",
+      "description": "Design a program that takes input from a user in the form of a fish \"smolt\" and outputs a creative result. Possible outputs could include a picture of the smolt, a story featuring the smolt, or a poem about the smolt."
+    },
+    {
+      "word": "spool",
+      "titles": "1. Spooled\n2. Spool This\n3. Spool Me",
+      "description": "Design a educational game for kids that teaches them about the lifecycle of a spool of thread."
+    },
+    {
+      "word": "buddy",
+      "titles": "Buddy Bear\nBuddy Box\nBuddy Up",
+      "description": "One project idea could be creating a buddy system for new students at school. This could involve having an experienced student be paired with a new student to help them adjust to their new surroundings. The buddy system could also be used for people who are new to a city or town, where a volunteer is paired with someone who"
+    },
+    {
+      "word": "bachelor",
+      "titles": "1. The Bachelor's Club\n2. The Bachelor's Party\n3. The Bachelor's Life",
+      "description": "Design a program that allows users to input their own love story. Include different prompts for different parts of the story, and allow the user to save and share their story with others."
     }
   ]
 }
