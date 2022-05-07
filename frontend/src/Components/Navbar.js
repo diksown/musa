@@ -3,17 +3,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import MusaLogoImg from "../Assets/Images/musa_logo.png";
 
+const MusaImg = () => {
+  return (
+    <img
+      className="MusaImg"
+      src={MusaLogoImg}
+      alt="Musa"
+      height="50px"
+      width="50px"
+    />
+  );
+};
+
+const MusaText = () => {
+  return (
+    <div className="MusaText">
+      <div>musa</div>
+    </div>
+  );
+};
+
 const MusaLogo = () => {
   return (
-    <img className="MusaLogo" src={MusaLogoImg} alt="Musa" height="50px" />
+    <a className="MusaLogo" href=".">
+      <MusaImg />
+      <MusaText />
+    </a>
   );
 };
 
 const GithubButton = () => {
   return (
-    <div className="Icon GithubButton">
+    <a
+      href="https://github.com/diksown/musa"
+      _target="blank"
+      className="GithubButton"
+    >
       <FontAwesomeIcon icon={faGithub} />
-    </div>
+    </a>
   );
 };
 

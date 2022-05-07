@@ -54,13 +54,14 @@ const Presentation = () => {
   return (
     <>
       <div className="PresentationTitle">
-        Let <span className="GradientHighlight">Artificial Intelligence </span>
+        Let<span className="GradientHighlight"> Artificial Intelligence </span>
         choose your next programming project 🚀
       </div>
       <div className="PresentationDescription">
         Musa is a generator of coding project ideas powered by GPT3, a ML model
-        that produces human-like text. This project is open source and the code
-        is available on GitHub. To see a project, click the Generate button!
+        that produces human-like text. To get your first inspiration, click the
+        <span> Generate </span>
+        button!
       </div>
     </>
   );

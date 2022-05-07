@@ -1,17 +1,33 @@
 .Navbar {
   display: flex;
-
   width: 100%;
   box-sizing: border-box;
   justify-content: space-between;
   padding: 10px;
-  /* margin: auto; */
 }
 
-.Icon {
+.MusaText {
+  letter-spacing: -0.03em;
+  margin: 0px 5px;
+  font-weight: 600;
+  font-size: 40px;
+  font-family: "Poppins";
+  color: rgb(37, 37, 37);
+}
+
+.MusaLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+}
+
+.GithubButton {
   font-size: 50px;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: rgb(37, 37, 37);
 }
 
 .RefreshButton {

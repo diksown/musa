@@ -3,26 +3,27 @@
 }
 
 .ProjectTitles {
-  margin: 0px 10px 20px 10px;
+  margin: 0px 10px 20px;
   font-size: 24px;
   font-weight: 900;
 }
 
 .ProjectDescription {
-  margin: 20px;
+  margin: 18px;
   font-size: 20px;
   font-family: "Rubik";
 }
 
 .PresentationTitle {
-  margin: 50px 10px 20px;
-  font-size: max(calc(15px + 2.2vw), 30px);
-  font-weight: 800;
+  margin: 20px 10px 20px;
+  font-size: max(calc(15px + 2.1vw), 30px);
+  line-height: 1.1;
+  font-weight: 900;
 }
 
 .PresentationDescription {
-  margin: 20px;
-  font-size: 20px;
+  margin: 5px;
+  font-size: 22px;
   font-family: "Rubik";
 }
 
