@@ -1,5 +1,6 @@
 import "./Card.css";
 import projects from "../Static/projects.js";
+import { useState } from "react";
 
 const genColor = (hue, saturation, lightness) => {
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
@@ -59,9 +60,8 @@ const Presentation = () => {
       </div>
       <div className="PresentationDescription">
         Musa is a generator of coding project ideas powered by GPT3, a ML model
-        that produces human-like text. To get your first inspiration, click the
-        <span> Generate </span>
-        button!
+        that produces human-like text. To get your first inspiration, just click
+        on the card.
       </div>
     </>
   );
@@ -75,11 +75,12 @@ const CardContent = ({ currentState }) => {
   }
 };
 
-const Card = ({ currentState }) => {
+const Card = () => {
+  const [projectState, setProjectState] = useState(0);
   return (
     <div className="MainCardWrapper">
-      <div className="MainCard">
-        <CardContent currentState={currentState} />
+      <div className="MainCard" onClick={() => setProjectState({})}>
+        <CardContent currentState={projectState} />
       </div>
     </div>
   );

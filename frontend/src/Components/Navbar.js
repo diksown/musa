@@ -44,19 +44,10 @@ const GithubButton = () => {
   );
 };
 
-const RefreshButton = ({ notifyClick }) => {
-  return (
-    <button className="RefreshButton" onClick={() => notifyClick({})}>
-      Generate
-    </button>
-  );
-};
-
-const Navbar = ({ notifyClick }) => {
+const Navbar = () => {
   return (
     <div className="Navbar">
       <MusaLogo />
-      <RefreshButton notifyClick={notifyClick} />
       <GithubButton />
     </div>
   );
