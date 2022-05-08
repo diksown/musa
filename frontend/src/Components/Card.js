@@ -1,6 +1,6 @@
 import "./Card.css";
 import projects from "../Static/projects.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const genColor = (hue, saturation, lightness) => {
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
@@ -60,8 +60,8 @@ const Presentation = () => {
       </div>
       <div className="PresentationDescription">
         Musa is a generator of coding project ideas powered by GPT3, a ML model
-        that produces human-like text. To get your first inspiration, just click
-        on the card.
+        that produces human-like text. To get your first inspiration, just press
+        space or click on this card.
       </div>
     </>
   );
@@ -77,6 +77,23 @@ const CardContent = ({ currentState }) => {
 
 const Card = () => {
   const [projectState, setProjectState] = useState(0);
+
+  const handleKeyDown = (event) => {
+    // If spacebar is pressed
+    if (event.keyCode === 32) {
+      setProjectState({});
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    // cleanup this component
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="MainCardWrapper">
       <div className="MainCard" onClick={() => setProjectState({})}>
