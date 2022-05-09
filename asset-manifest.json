@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.34682bd7.css",
-    "main.js": "/static/js/main.3e62df68.js",
+    "main.css": "/static/css/main.a38a3907.css",
+    "main.js": "/static/js/main.78e56a41.js",
     "static/media/musa_logo.png": "/static/media/musa_logo.87defd59aa59b0091aa3.png",
     "index.html": "/index.html",
-    "main.34682bd7.css.map": "/static/css/main.34682bd7.css.map",
-    "main.3e62df68.js.map": "/static/js/main.3e62df68.js.map"
+    "main.a38a3907.css.map": "/static/css/main.a38a3907.css.map",
+    "main.78e56a41.js.map": "/static/js/main.78e56a41.js.map"
   },
   "entrypoints": [
-    "static/css/main.34682bd7.css",
-    "static/js/main.3e62df68.js"
+    "static/css/main.a38a3907.css",
+    "static/js/main.78e56a41.js"
   ]
 }
