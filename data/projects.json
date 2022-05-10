@@ -534,6 +534,26 @@
       "word": "bachelor",
       "titles": "1. The Bachelor's Club\n2. The Bachelor's Party\n3. The Bachelor's Life",
       "description": "Design a program that allows users to input their own love story. Include different prompts for different parts of the story, and allow the user to save and share their story with others."
+    },
+    {
+      "word": "skunk",
+      "titles": "1. Skunkworks\n2. Skunknado\n3. Skunkadelic",
+      "description": "Design a game where the player controls a skunk who must spray other animals with their stench in order to win. Use creative graphics and sound effects to make the game as realistic (and smelly) as possible!"
+    },
+    {
+      "word": "daisy",
+      "titles": "1. The Great Daisy Experiment\n2. Daisy World\n3. A Day in the Life of a Daisy",
+      "description": "One idea for a creative programming project about daisies could be to create a program that generates a virtual daisy field. This field could be populated with different types of daisies, and users could choose to add or remove different types of daisies. The user could also choose to have the dais"
+    },
+    {
+      "word": "lounge",
+      "titles": "1. lounge around\n2. lounge lizard\n3. lounge act",
+      "description": "Design a program that can generate a personalized playlist for a lounge or waiting area. The program should take into account the musical preferences of the user, the time of day, and the atmosphere of the lounge."
+    },
+    {
+      "word": "dancing",
+      "titles": "1. Dance your heart out!\n2. Get your groove on!\n3. Dance like no one's watching!",
+      "description": "Design a program that generates original dance moves based on input from the user."
     }
   ]
 }
