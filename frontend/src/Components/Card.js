@@ -6,13 +6,13 @@ const generateProject = () => {
   const randomIndex = Math.floor(Math.random() * projects.length);
   const project = projects[randomIndex];
   return {
-    titles: project.titles,
+    title: project.title,
     description: project.description,
   };
 };
 
-const ProjectTitle = ({ titles }) => {
-  return <div className="ProjectTitles SpacedText">{titles}</div>;
+const ProjectTitle = ({ title }) => {
+  return <div className="ProjectTitle SpacedText">{title}</div>;
 };
 
 const ProjectDescription = ({ description }) => {
@@ -20,10 +20,10 @@ const ProjectDescription = ({ description }) => {
 };
 
 const Project = () => {
-  const { titles, description } = generateProject();
+  const { title, description } = generateProject();
   return (
     <>
-      <ProjectTitle titles={titles} />
+      <ProjectTitle title={title} />
       <ProjectDescription description={description} />
     </>
   );

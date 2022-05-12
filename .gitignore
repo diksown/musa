@@ -1,3 +1,6 @@
+# Hidden utils
+utils/
+
 # Logs
 logs
 *.log

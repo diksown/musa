@@ -8,7 +8,7 @@
   white-space: pre-line;
 }
 
-.ProjectTitles {
+.ProjectTitle {
   margin: var(--default-margin);
   font-size: calc(1.5 * var(--base-font-size));
   font-weight: 900;
