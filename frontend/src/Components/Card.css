@@ -1,29 +1,36 @@
+:root {
+  --base-font-size: min(calc(14px + 0.6vw), 20px);
+  --default-margin: var(--base-font-size);
+  --card-color: #f1f1f1;
+}
+
 .SpacedText {
   white-space: pre-line;
 }
 
 .ProjectTitles {
-  margin: 0px 10px 20px;
-  font-size: 24px;
+  margin: var(--default-margin);
+  font-size: calc(1.5 * var(--base-font-size));
   font-weight: 900;
 }
 
 .ProjectDescription {
-  margin: 18px;
-  font-size: 20px;
+  margin: var(--default-margin);
+  font-size: var(--base-font-size);
   font-family: "Rubik";
 }
 
 .PresentationTitle {
-  margin: 20px 10px 20px;
-  font-size: max(calc(15px + 2.1vw), 30px);
+  margin: var(--default-margin) var(--default-margin)
+    calc(1.5 * var(--default-margin));
+  font-size: calc(1.8 * var(--base-font-size));
   line-height: 1.1;
   font-weight: 900;
 }
 
 .PresentationDescription {
   margin: 5px;
-  font-size: 22px;
+  font-size: calc(1.1 * var(--base-font-size));
   font-family: "Rubik";
 }
 
@@ -40,7 +47,7 @@
 
 .MainCardWrapper {
   margin: auto 0;
-  padding: 15px;
+  padding: var(--default-margin);
 }
 
 .MainCard {
@@ -51,8 +58,8 @@
   justify-content: center;
   align-items: center;
   max-width: 800px;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px 3px rgba(60, 60, 60, 0.3);
+  padding: var(--default-margin);
 }
