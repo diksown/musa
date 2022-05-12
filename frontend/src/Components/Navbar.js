@@ -4,8 +4,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import MusaLogoImg from "../Assets/Images/musa_logo";
 import { MdContentCopy } from "react-icons/md";
 import { IconContext } from "react-icons";
-//import cogoToast from 'cogo-toast';
-//cogoToast.success("Success!");
+import toast from "react-hot-toast";
 
 const MusaImg = () => {
   return <MusaLogoImg size="50" />;
@@ -40,7 +39,7 @@ const GithubButton = () => {
   );
 };
 
-const ShareButton = () => {
+const ShareIcon = () => {
   return (
     <IconContext.Provider value={{ size: "50px" }}>
       <div>
@@ -50,11 +49,15 @@ const ShareButton = () => {
   );
 };
 
+const ShareButton = () => {
+  return <button onClick={() => toast.success("Project copied")}>Share</button>;
+};
+
 const Navbar = () => {
   return (
     <div className="Navbar">
       <MusaLogo />
-      {/* <ShareButton /> */}
+      <ShareButton />
       <GithubButton />
     </div>
   );
