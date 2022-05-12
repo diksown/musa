@@ -6,7 +6,7 @@ const genColor = (hue, chr, luminance) => {
 
 const generateGradient = () => {
   const randomHue = Math.floor(Math.random() * 360);
-  const deltaHue = 110;
+  const deltaHue = 60;
   const chr = 40;
   const luminance = 70;
   return {
