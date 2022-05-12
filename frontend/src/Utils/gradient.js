@@ -5,9 +5,12 @@ const genColor = (hue, chr, luminance) => {
 };
 
 const generateGradient = () => {
-  const randomHue = Math.floor(Math.random() * 360);
+  // Yellow-ish gradients don't look good
+  const minHue = 150;
+  const maxHue = 360;
+  const randomHue = Math.floor(Math.random() * (maxHue - minHue)) + minHue;
   const deltaHue = 60;
-  const chr = 40;
+  const chr = 45;
   const luminance = 70;
   return {
     color1: genColor(randomHue, chr, luminance),

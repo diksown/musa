@@ -1,18 +1,10 @@
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import MusaLogoImg from "../Assets/Images/musa_logo.png";
+import MusaLogoImg from "../Assets/Images/musa_logo";
 
 const MusaImg = () => {
-  return (
-    <img
-      className="MusaImg"
-      src={MusaLogoImg}
-      alt="Musa"
-      height="50px"
-      width="50px"
-    />
-  );
+  return <MusaLogoImg size="50" />;
 };
 
 const MusaText = () => {
