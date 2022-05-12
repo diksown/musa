@@ -2,6 +2,10 @@ import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import MusaLogoImg from "../Assets/Images/musa_logo";
+import { MdContentCopy } from "react-icons/md";
+import { IconContext } from "react-icons";
+//import cogoToast from 'cogo-toast';
+//cogoToast.success("Success!");
 
 const MusaImg = () => {
   return <MusaLogoImg size="50" />;
@@ -36,10 +40,21 @@ const GithubButton = () => {
   );
 };
 
+const ShareButton = () => {
+  return (
+    <IconContext.Provider value={{ size: "50px" }}>
+      <div>
+        <MdContentCopy />
+      </div>
+    </IconContext.Provider>
+  );
+};
+
 const Navbar = () => {
   return (
     <div className="Navbar">
       <MusaLogo />
+      {/* <ShareButton /> */}
       <GithubButton />
     </div>
   );
