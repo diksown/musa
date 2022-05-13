@@ -13,11 +13,15 @@ const generateProject = () => {
 };
 
 const ProjectTitle = ({ title }) => {
-  return <div className="ProjectTitle SpacedText">{title}</div>;
+  return (
+    <>
+      <div className="ProjectTitle">{title}</div>
+    </>
+  );
 };
 
 const ProjectDescription = ({ description }) => {
-  return <div className="ProjectDescription SpacedText">{description}</div>;
+  return <div className="ProjectDescription">{description}</div>;
 };
 
 const Project = () => {

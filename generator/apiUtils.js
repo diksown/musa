@@ -6,6 +6,7 @@ import getWordGenerator from "./wordGenerator.js";
 let generateProjectFragment = async (word, fragmentType) => {
   let optionsSwitch = {
     titles: {
+      // TODO: Set maxTokens to 6 and ask for only one title
       maxTokens: 32,
       prompt: `give me 3 cool, fun and quirky names about a project involving ${word}. display them in a numbered list (1. 2. 3., etc), one per line.\n`,
     },

@@ -1,9 +1,5 @@
-.SpacedText {
-  white-space: pre-line;
-}
-
 .ProjectTitle {
-  margin: 0.7rem 3rem;
+  margin: 0.5rem 3rem;
   font-size: 1.5rem;
   font-weight: 900;
 }
@@ -45,7 +41,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   max-width: 800px;
   background-color: var(--card-color);
   border-radius: 10px;

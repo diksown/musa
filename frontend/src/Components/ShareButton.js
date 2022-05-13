@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const ShareIcon = () => {
   return (
-    <IconContext.Provider value={{ size: "40px" }}>
+    <IconContext.Provider value={{ size: "2.5rem" }}>
       <div>
         <MdShare />
       </div>
@@ -14,8 +14,13 @@ const ShareIcon = () => {
 };
 
 const ShareButton = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    toast.success("Copied to clipboard!");
+  };
+
   return (
-    <button class="ShareButton" onClick={() => toast.success("Project copied")}>
+    <button class="ShareButton" onClick={handleClick}>
       <ShareIcon />
     </button>
   );

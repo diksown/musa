@@ -1,5 +1,6 @@
 .ShareButton {
   --offset-share: 1rem;
+  color: inherit;
   display: flex;
   align-self: end;
   margin: 0;
