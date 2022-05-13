@@ -2,25 +2,17 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Card from "./Components/Card";
 import Footer from "./Components/Footer";
-import { useState } from "react";
+import CustomToaster from "./Components/CustomToaster";
 import bgGradientStyle from "./Utils/gradient";
-import { Toaster } from "react-hot-toast";
+import { useState } from "react";
 
 let App = () => {
-  const [refreshFlag, setRefreshFlag] = useState(0);
+  const [project, setProject] = useState(0);
   return (
     <div className="App" style={bgGradientStyle()}>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 1500,
-          style: {
-            fontSize: "1rem",
-          },
-        }}
-      />
+      <CustomToaster />
       <Navbar />
-      <Card refreshFlag={refreshFlag} setRefreshFlag={setRefreshFlag} />
+      <Card project={project} setProject={setProject} />
       <Footer />
     </div>
   );

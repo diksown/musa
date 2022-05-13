@@ -3,13 +3,13 @@ import projects from "../Static/projects.js";
 import { useEffect } from "react";
 import ShareButton from "./ShareButton";
 
-const generateProject = () => {
+const generateProject = (setProject) => {
   const randomIndex = Math.floor(Math.random() * projects.length);
-  const project = projects[randomIndex];
-  return {
-    title: project.title,
-    description: project.description,
-  };
+  const randomProject = projects[randomIndex];
+  setProject({
+    title: randomProject.title,
+    description: randomProject.description,
+  });
 };
 
 const ProjectTitle = ({ title }) => {
@@ -24,8 +24,8 @@ const ProjectDescription = ({ description }) => {
   return <div className="ProjectDescription">{description}</div>;
 };
 
-const Project = () => {
-  const { title, description } = generateProject();
+const Project = ({ project }) => {
+  const { title, description } = project;
   return (
     <>
       <ProjectTitle title={title} />
@@ -50,19 +50,19 @@ const Presentation = () => {
   );
 };
 
-const CardContent = ({ currentState }) => {
-  if (currentState === 0) {
+const CardContent = ({ project }) => {
+  if (project === 0) {
     return <Presentation />;
   } else {
-    return <Project />;
+    return <Project project={project} />;
   }
 };
 
-const Card = ({ refreshFlag, setRefreshFlag }) => {
+const Card = ({ project, setProject }) => {
   const handleKeyDown = (event) => {
     // If spacebar is pressed
     if (event.keyCode === 32) {
-      setRefreshFlag({});
+      generateProject(setProject);
     }
   };
 
@@ -75,9 +75,9 @@ const Card = ({ refreshFlag, setRefreshFlag }) => {
 
   return (
     <>
-      <div className="Card" onClick={() => setRefreshFlag({})}>
-        <ShareButton />
-        <CardContent currentState={refreshFlag} />
+      <div className="Card" onClick={() => generateProject(setProject)}>
+        {project !== 0 && <ShareButton project={project} />}
+        <CardContent project={project} />
       </div>
     </>
   );
