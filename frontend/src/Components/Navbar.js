@@ -28,7 +28,8 @@ const GithubButton = () => {
   return (
     <a
       href="https://github.com/diksown/musa"
-      _target="blank"
+      target="_blank"
+      rel="noreferrer"
       className="GithubButton"
     >
       <FontAwesomeIcon icon={faGithub} />

@@ -1,36 +1,29 @@
-:root {
-  --base-font-size: min(calc(14px + 0.6vw), 20px);
-  --default-spacing: var(--base-font-size);
-  --card-color: #f1f1f1;
-}
-
 .SpacedText {
   white-space: pre-line;
 }
 
 .ProjectTitle {
-  margin: var(--default-spacing);
-  font-size: calc(1.5 * var(--base-font-size));
+  margin: 0.7rem 3rem;
+  font-size: 1.5rem;
   font-weight: 900;
 }
 
 .ProjectDescription {
-  margin: var(--default-spacing);
-  font-size: var(--base-font-size);
+  margin: 1rem;
+  font-size: 1rem;
   font-family: "Rubik";
 }
 
 .PresentationTitle {
-  margin: var(--default-spacing) var(--default-spacing)
-    calc(1.5 * var(--default-spacing));
-  font-size: calc(1.8 * var(--base-font-size));
+  margin: 1rem 1rem 1.5rem;
+  font-size: 1.8rem;
   line-height: 1.1;
   font-weight: 900;
 }
 
 .PresentationDescription {
   margin: 5px;
-  font-size: calc(1.1 * var(--base-font-size));
+  font-size: 1.1rem;
   font-family: "Rubik";
 }
 
@@ -46,6 +39,7 @@
 }
 
 .Card {
+  --card-color: #f1f1f1;
   user-select: none;
   cursor: pointer;
   display: flex;
@@ -56,6 +50,7 @@
   background-color: var(--card-color);
   border-radius: 10px;
   box-shadow: 0px 4px 10px 3px rgba(60, 60, 60, 0.3);
-  padding: var(--default-spacing);
-  margin: var(--default-spacing);
+  padding: 1rem;
+  margin: 1rem;
+  position: relative;
 }

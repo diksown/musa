@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const ShareIcon = () => {
   return (
-    <IconContext.Provider value={{ size: "50px" }}>
+    <IconContext.Provider value={{ size: "40px" }}>
       <div>
         <MdShare />
       </div>

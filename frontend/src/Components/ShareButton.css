@@ -1,4 +1,5 @@
 .ShareButton {
+  --offset-share: 1rem;
   display: flex;
   align-self: end;
   margin: 0;
@@ -7,4 +8,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
+  position: absolute;
+  top: var(--offset-share);
+  right: var(--offset-share);
 }
