@@ -1,6 +1,7 @@
 import "./Card.css";
 import projects from "../Static/projects.js";
 import { useEffect } from "react";
+// import ShareButton from "./ShareButton";
 
 const generateProject = () => {
   const randomIndex = Math.floor(Math.random() * projects.length);
@@ -69,10 +70,8 @@ const Card = ({ refreshFlag, setRefreshFlag }) => {
   });
 
   return (
-    <div className="MainCardWrapper">
-      <div className="MainCard" onClick={() => setRefreshFlag({})}>
-        <CardContent currentState={refreshFlag} />
-      </div>
+    <div className="Card" onClick={() => setRefreshFlag({})}>
+      <CardContent currentState={refreshFlag} />
     </div>
   );
 };

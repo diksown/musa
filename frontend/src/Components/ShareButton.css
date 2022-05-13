@@ -1,0 +1,10 @@
+.ShareButton {
+  display: flex;
+  align-self: end;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
