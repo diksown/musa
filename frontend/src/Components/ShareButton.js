@@ -3,6 +3,7 @@ import { MdShare } from "react-icons/md";
 import { IconContext } from "react-icons";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import "./NavButton.css";
 
 const ShareIcon = () => {
   return (
@@ -33,7 +34,7 @@ const ShareButton = ({ project }) => {
 
   return (
     <CopyToClipboard text={textToCopy}>
-      <button className="ShareButton" onClick={handleClick}>
+      <button className="ShareButton NavButton" onClick={handleClick}>
         <ShareIcon />
       </button>
     </CopyToClipboard>

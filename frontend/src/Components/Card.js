@@ -2,6 +2,7 @@ import "./Card.css";
 import projects from "../Static/projects.js";
 import { useEffect } from "react";
 import ShareButton from "./ShareButton";
+import BackButton from "./BackButton";
 
 const generateProject = (setProject) => {
   const randomIndex = Math.floor(Math.random() * projects.length);
@@ -77,6 +78,7 @@ const Card = ({ project, setProject }) => {
     <>
       <div className="Card" onClick={() => generateProject(setProject)}>
         {project !== 0 && <ShareButton project={project} />}
+        {project !== 0 && <BackButton setProject={setProject} />}
         <CardContent project={project} />
       </div>
     </>

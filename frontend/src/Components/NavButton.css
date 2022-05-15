@@ -1,0 +1,11 @@
+.NavButton {
+  --offset-nav: 1rem;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+}
