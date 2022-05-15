@@ -1,9 +1,9 @@
+import "./NavButton.css";
 import "./ShareButton.css";
 import { MdShare } from "react-icons/md";
 import { IconContext } from "react-icons";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import "./NavButton.css";
 import findProject from "../Utils/projectShuffler";
 
 const ShareIcon = () => {

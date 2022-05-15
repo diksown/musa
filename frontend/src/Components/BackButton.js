@@ -1,7 +1,7 @@
+import "./NavButton.css";
 import "./BackButton.css";
 import { MdArrowBack } from "react-icons/md";
 import { IconContext } from "react-icons";
-import "./NavButton.css";
 
 const BackIcon = () => {
   return (
