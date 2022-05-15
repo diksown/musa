@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./NavButton.css";
+import { projects, projectIds, findProject } from "../Utils/projectShuffler";
 
 const ShareIcon = () => {
   return (
@@ -15,17 +16,16 @@ const ShareIcon = () => {
   );
 };
 
-const ShareButton = ({ project }) => {
-  const getFormattedProject = (project) => {
-    const title = `"${project.title}"`;
-    const description = `${project.description}`;
+const ShareButton = ({ projectNumber }) => {
+  const getFormattedProject = (projectNumber) => {
+    const { title, description } = findProject(projectNumber);
     const projectText = title + "\n\n" + description;
     const redirectLink = "https://musa.dikson.xyz";
     const redirectText = "Check more project ideas at " + redirectLink + "!";
     return projectText + "\n\n" + redirectText;
   };
 
-  const textToCopy = getFormattedProject(project);
+  const textToCopy = getFormattedProject(projectNumber);
 
   const handleClick = (e) => {
     e.stopPropagation();

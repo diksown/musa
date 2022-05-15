@@ -7,12 +7,12 @@ import bgGradientStyle from "./Utils/gradient";
 import { useState } from "react";
 
 let App = () => {
-  const [project, setProject] = useState(0);
+  const [projectNumber, setProjectNumber] = useState(0);
   return (
     <div className="App" style={bgGradientStyle()}>
       <CustomToaster />
       <Navbar />
-      <Card project={project} setProject={setProject} />
+      <Card projectNumber={projectNumber} setProjectNumber={setProjectNumber} />
       <Footer />
     </div>
   );

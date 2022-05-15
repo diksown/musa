@@ -1,17 +1,8 @@
 import "./Card.css";
-import projects from "../Static/projects.js";
+import { projects, projectIds, findProject } from "../Utils/projectShuffler";
 import { useEffect } from "react";
 import ShareButton from "./ShareButton";
 import BackButton from "./BackButton";
-
-const generateProject = (setProject) => {
-  const randomIndex = Math.floor(Math.random() * projects.length);
-  const randomProject = projects[randomIndex];
-  setProject({
-    title: randomProject.title,
-    description: randomProject.description,
-  });
-};
 
 const ProjectTitle = ({ title }) => {
   return (
@@ -25,8 +16,8 @@ const ProjectDescription = ({ description }) => {
   return <div className="ProjectDescription">{description}</div>;
 };
 
-const Project = ({ project }) => {
-  const { title, description } = project;
+const Project = ({ projectNumber }) => {
+  const { title, description } = findProject(projectNumber);
   return (
     <>
       <ProjectTitle title={title} />
@@ -51,19 +42,19 @@ const Presentation = () => {
   );
 };
 
-const CardContent = ({ project }) => {
-  if (project === 0) {
+const CardContent = ({ projectNumber }) => {
+  if (projectNumber === 0) {
     return <Presentation />;
   } else {
-    return <Project project={project} />;
+    return <Project projectNumber={projectNumber} />;
   }
 };
 
-const Card = ({ project, setProject }) => {
+const Card = ({ projectNumber, setProjectNumber }) => {
   const handleKeyDown = (event) => {
     // If spacebar is pressed
     if (event.keyCode === 32) {
-      generateProject(setProject);
+      setProjectNumber(projectNumber + 1);
     }
   };
 
@@ -76,10 +67,15 @@ const Card = ({ project, setProject }) => {
 
   return (
     <>
-      <div className="Card" onClick={() => generateProject(setProject)}>
-        {project !== 0 && <ShareButton project={project} />}
-        {project !== 0 && <BackButton setProject={setProject} />}
-        <CardContent project={project} />
+      <div className="Card" onClick={() => setProjectNumber(projectNumber + 1)}>
+        {projectNumber > 0 && <ShareButton projectNumber={projectNumber} />}
+        {projectNumber > 1 && (
+          <BackButton
+            projectNumber={projectNumber}
+            setProjectNumber={setProjectNumber}
+          />
+        )}
+        <CardContent projectNumber={projectNumber} />
       </div>
     </>
   );

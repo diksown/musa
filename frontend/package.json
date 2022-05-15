@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "chroma-js": "^2.4.2",
     "color": "^4.2.3",
+    "knuth-shuffle-seeded": "^1.0.6",
     "react": "^18.0.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.0.0",

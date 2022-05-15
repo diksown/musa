@@ -13,11 +13,12 @@ const BackIcon = () => {
   );
 };
 
-const BackButton = () => {
+const BackButton = ({ setProjectNumber, projectNumber }) => {
   const handleClick = (e) => {
     e.stopPropagation();
-    window.history.back();
+    setProjectNumber(projectNumber - 1);
   };
+
   return (
     <button className="BackButton NavButton" onClick={handleClick}>
       <BackIcon />
