@@ -1,5 +1,5 @@
 import "./Card.css";
-import { projects, projectIds, findProject } from "../Utils/projectShuffler";
+import findProject from "../Utils/projectShuffler";
 import { useEffect } from "react";
 import ShareButton from "./ShareButton";
 import BackButton from "./BackButton";

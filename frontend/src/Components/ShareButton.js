@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./NavButton.css";
-import { projects, projectIds, findProject } from "../Utils/projectShuffler";
+import findProject from "../Utils/projectShuffler";
 
 const ShareIcon = () => {
   return (
