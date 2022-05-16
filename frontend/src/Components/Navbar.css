@@ -23,11 +23,7 @@
 }
 
 .GithubButton {
-  font-size: 50px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: rgb(37, 37, 37);
+  color: inherit;
 }
 
 .RefreshButton {

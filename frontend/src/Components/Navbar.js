@@ -1,6 +1,6 @@
 import "./Navbar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FaGithub } from "react-icons/fa";
+import { IconContext } from "react-icons";
 import MusaLogoImg from "../Assets/Images/musa_logo";
 
 const MusaImg = () => {
@@ -24,6 +24,16 @@ const MusaLogo = () => {
   );
 };
 
+const GithubIcon = () => {
+  return (
+    <IconContext.Provider value={{ size: "50px" }}>
+      <div>
+        <FaGithub />
+      </div>
+    </IconContext.Provider>
+  );
+};
+
 const GithubButton = () => {
   return (
     <a
@@ -32,7 +42,7 @@ const GithubButton = () => {
       rel="noreferrer"
       className="GithubButton"
     >
-      <FontAwesomeIcon icon={faGithub} />
+      <GithubIcon />
     </a>
   );
 };
