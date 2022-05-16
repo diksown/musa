@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://musa.dikson.xyz">
-    <img src="https://user-images.githubusercontent.com/49994083/167600749-7f09ea52-9375-4fa9-9c37-a6c5701c68e2.svg" height="200px">
+    <img src="https://user-images.githubusercontent.com/49994083/168507729-4ecca925-fe72-47ff-bedf-6705e2b60112.png" height="200px">
   </a>
 </h1>
 
