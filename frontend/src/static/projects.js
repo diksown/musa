@@ -324,12 +324,6 @@ const projects = [
     title: "Surgery Buddies",
   },
   {
-    word: "suspect",
-    description:
-      "A suspect tracking program that allows the user to input information about a suspect and keep track of their whereabouts.",
-    title: "Suspect",
-  },
-  {
     word: "dream",
     description:
       "One possible project idea is to create a program that allows users to input their dreams and then generates creative interpretation or stories based on those dreams. Another idea could be to create a dream journaling app that prompts users upon waking to record their dreams and then offers creative ways to further explore and reflect on those dreams.",
@@ -414,12 +408,6 @@ const projects = [
     title: "Cenotaph of the Unknown Soldier",
   },
   {
-    word: "riot",
-    description:
-      "A riot control simulator that allows users to experience what it's like to try and control a riot. The simulator would feature different scenarios and levels of difficulty, and would require users to use different strategies and tactics to try and quell the unrest.",
-    title: "Riot Control",
-  },
-  {
     word: "dueling",
     description:
       'Rock, Paper, Scissors Tournament:\n\nThis project would be a tournament-style competition where players face off in a game of rock, paper, scissors. The catch is that each player would be able to program their own "bot" to compete in the tournament. These bots would use artificial intelligence to try and beat their opponents.',
@@ -448,12 +436,6 @@ const projects = [
     description:
       "A program that helps manage relations between stepsisters. The program could provide tips on how to develop a good relationship, how to deal with difficult situations, and how to show love and support.",
     title: "Franken sisters",
-  },
-  {
-    word: "hospice",
-    description:
-      "Design a program that can predict when a hospice patient will die.",
-    title: "Life's End: A Hospice Project",
   },
   {
     word: "facsimile",
@@ -562,12 +544,6 @@ const projects = [
     description:
       "Design a program that can take two mono audio signals and convert them into a single stereo signal.",
     title: "i2i",
-  },
-  {
-    word: "aftershock",
-    description:
-      "Design a program that can predict aftershocks from an earthquake.",
-    title: "Shaken, Not Stirred",
   },
   {
     word: "pantology",
