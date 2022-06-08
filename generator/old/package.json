@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "knuth-shuffle-seeded": "^1.0.6",
+    "node-fetch": "^3.2.3",
+    "openai": "^2.0.5",
+    "yargs": "^17.4.1"
+  },
+  "scripts": {
+    "start": "node generator.js"
+  }
+}
