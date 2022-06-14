@@ -1,14 +1,18 @@
 {
-  "name": "generator",
+  "name": "musag",
   "version": "1.0.0",
   "description": "A generator of programming prompts using the OpenAI API.",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "musag": "bin/index.js"
+  },
   "author": "Dikson Santos",
   "license": "MIT",
   "dependencies": {
-    "openai": "^3.0.0"
+    "openai": "^3.0.0",
+    "yargs": "^17.5.1"
   }
 }
