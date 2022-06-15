@@ -11,6 +11,22 @@ class Musagen {
     return response;
   }
 
+  // Checks is the OpenAI API is valid.
+  // Low cost call ($0.000001 of API credits)
+  async checkApiKey() {
+    const optionsForTest = {
+      prompt: "a",
+      max_tokens: 1,
+      model: "text-ada-001",
+    };
+    try {
+      await this.completion(optionsForTest);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async completion({
     prompt,
     model = "text-davinci-002",

@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
 import Musagen from "../utils.js";
+import sl from "../sl.js";
+import fs from "fs/promises";
 import yargs from "yargs";
+import inquirer from "inquirer";
+import os from "os";
 import { hideBin } from "yargs/helpers";
 
 const posArgs = (argv) => {
@@ -11,9 +15,9 @@ const posArgs = (argv) => {
 const generateProjects = (args) => {
   console.log("Generating projects..." + args);
   // Check if number of arguments is correct
-  // Get a list of words as a input and a output json name
-  // Check if the input json exists
-  // Try to parse the json
+  // Get a list of words as a input txt and a output json name
+  // Check if the input exists
+  // Generate projects while displaying a progress bar
 };
 
 const generateProjectFromWord = (args) => {
@@ -22,11 +26,39 @@ const generateProjectFromWord = (args) => {
   // if the word is not a valid word (too long?), throw an error
 };
 
-const setApiKey = () => {
+const hideApiKey = (str) => {
+  return str.slice(0, 3) + "..." + str.slice(-4);
+};
+
+const setApiKey = async () => {
   console.log("Setting API key...");
-  // Prompt the user for a API key
-  // Checks if the key is valid and if so, store it to the config file
-  // Otherwise, throws an error
+  const userInput = await inquirer.prompt({
+    type: "input",
+    name: "apikey",
+    message: "Insert your OpenAI API key:",
+  });
+  const apiKey = userInput.apikey.trim();
+  const musaApi = new Musagen(apiKey);
+  const apiKeyValidity = await musaApi.checkApiKey();
+  if (apiKeyValidity) {
+    sl.ok("API key is valid! Wohoo!");
+    const homedir = os.homedir();
+    const configFolder = `${homedir}/.musag`;
+    await fs.mkdir(configFolder);
+    const configFile = `${configFolder}/config.json`;
+    let configJson = {};
+    try {
+      const config = await fs.readFile(configFile);
+      configJson = JSON.parse(config);
+    } catch (err) {
+      configJson = {};
+    }
+    configJson.apikey = apiKey;
+    await fs.writeFile(configFile, JSON.stringify(configJson));
+    sl.log(`Saved API key ${hideApiKey(apiKey)} to ${configFile}`);
+  } else {
+    sl.err("API key is invalid :( - Try again!");
+  }
 };
 
 const purifyProjects = (args) => {
@@ -79,4 +111,5 @@ yargs(hideBin(process.argv))
     "Get the projects from impure.json and store the purified projects on purified.json"
   )
   .demandCommand(1, "You must provide a command")
+  .strict()
   .recommendCommands().argv;
