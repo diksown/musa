@@ -47,7 +47,7 @@ class Musagen {
     let options = {};
     if (fragmentType === "title") {
       options = {
-        prompt: `give me a fun and quirky name about a project involving ${word}.\n`,
+        prompt: `give me a punny and quirky name about a project involving ${word}.\n`,
         max_tokens: 9,
       };
     } else if (fragmentType === "description") {
