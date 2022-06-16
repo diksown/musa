@@ -8,12 +8,8 @@ import yargs from "yargs";
 import inquirer from "inquirer";
 import { hideBin } from "yargs/helpers";
 
-const posArgs = (argv) => {
-  return argv._.slice(1);
-};
-
-const generateProjects = (args) => {
-  console.log("Generating projects..." + args);
+const generateProjects = (inputFile, outputFile) => {
+  console.log("Generating projects...");
   // Check if number of arguments is correct
   // Get a list of words as a input txt and a output json name
   // Check if the input exists
@@ -93,14 +89,14 @@ yargs(hideBin(process.argv))
     "gen <input_file> <output_file>",
     "Generate projects for all words inside a file and output it in a json format",
     () => {},
-    (argv) => generateProjects(posArgs(argv))
+    (argv) => generateProjects(argv.input_file, argv.output_file)
   )
   .example("$0 gen words.txt output.json")
   .command(
     "word <project_word>",
     "Display a project generated based on the word <project_word>",
     () => {},
-    (argv) => generateProjectFromWord(argv.word)
+    (argv) => generateProjectFromWord(argv.project_word)
   )
   .example(
     "$0 word water",
@@ -117,7 +113,7 @@ yargs(hideBin(process.argv))
     "purify <input_file> <output_file>",
     "Purify a json file of projects (potentially generated with $0 gen). this keeps only the projects that have CFTitle and CFDescription equals to zero and removes unnecessary fields",
     () => {},
-    (argv) => purifyProjects(argv.inputFile, argv.outputFile)
+    (argv) => purifyProjects(argv.input_file, argv.output_file)
   )
   .example(
     "$0 purify impure.json purified.json",
