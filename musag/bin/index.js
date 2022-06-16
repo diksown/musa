@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import Musagen from "../utils.js";
-import sl from "../sl.js";
+import Musagen from "../lib/apiwrapper.js";
+import sl from "../lib/sl.js";
+import { CONFIG_FOLDER, CONFIG_FILE } from "../lib/config.js";
 import fs from "fs/promises";
 import yargs from "yargs";
 import inquirer from "inquirer";
-import os from "os";
 import { hideBin } from "yargs/helpers";
 
 const posArgs = (argv) => {
@@ -20,10 +20,19 @@ const generateProjects = (args) => {
   // Generate projects while displaying a progress bar
 };
 
-const generateProjectFromWord = (args) => {
-  console.log("Generating project from word..." + args);
-  // Get a word and display the project
-  // if the word is not a valid word (too long?), throw an error
+const generateProjectFromWord = async (word) => {
+  let apiKey;
+  try {
+    apiKey = await getApiKey();
+  } catch {
+    sl.err("No API key found. Set one with 'musag setapikey'");
+    return;
+  }
+  const musaApi = new Musagen(apiKey);
+  const project = await musaApi.generateProject(word);
+  console.log(project.title);
+  console.log();
+  console.log(project.description);
 };
 
 const hideApiKey = (str) => {
@@ -42,27 +51,34 @@ const setApiKey = async () => {
   const apiKeyValidity = await musaApi.checkApiKey();
   if (apiKeyValidity) {
     sl.ok("API key is valid! Wohoo!");
-    const homedir = os.homedir();
-    const configFolder = `${homedir}/.musag`;
-    await fs.mkdir(configFolder);
-    const configFile = `${configFolder}/config.json`;
+    await fs.mkdir(CONFIG_FOLDER, { recursive: true });
     let configJson = {};
     try {
-      const config = await fs.readFile(configFile);
+      const config = await fs.readFile(CONFIG_FILE);
       configJson = JSON.parse(config);
     } catch (err) {
       configJson = {};
     }
     configJson.apikey = apiKey;
-    await fs.writeFile(configFile, JSON.stringify(configJson));
-    sl.log(`Saved API key ${hideApiKey(apiKey)} to ${configFile}`);
+    await fs.writeFile(CONFIG_FILE, JSON.stringify(configJson));
+    sl.log(`Saved API key ${hideApiKey(apiKey)} to ${CONFIG_FILE}`);
   } else {
     sl.err("API key is invalid :( - Try again!");
   }
 };
 
-const purifyProjects = (args) => {
-  console.log("Purifying projects..." + args);
+const getApiKey = async () => {
+  try {
+    const config = await fs.readFile(CONFIG_FILE);
+    const configJson = JSON.parse(config);
+    return configJson.apikey;
+  } catch (err) {
+    throw "No API key found.";
+  }
+};
+
+const purifyProjects = (inputFile, outputFile) => {
+  console.log("Purifying projects...");
   // Get a input json and a output json name
   // Check if the input json exists
   // Try to parse the json
@@ -74,20 +90,17 @@ const purifyProjects = (args) => {
 yargs(hideBin(process.argv))
   .usage("Usage: $0 <command> [options]")
   .command(
-    "gen",
-    "Generate projects all words inside a file and output it to a json file",
+    "gen <input_file> <output_file>",
+    "Generate projects for all words inside a file and output it in a json format",
     () => {},
     (argv) => generateProjects(posArgs(argv))
   )
-  .example(
-    "$0 gen words.txt output.json",
-    "Generate projects from words.txt and store it on output.json in a detailed format"
-  )
+  .example("$0 gen words.txt output.json")
   .command(
-    "word",
-    "Display a project from a word",
+    "word <project_word>",
+    "Display a project generated based on the word <project_word>",
     () => {},
-    (argv) => generateProjectFromWord(posArgs(argv))
+    (argv) => generateProjectFromWord(argv.word)
   )
   .example(
     "$0 word water",
@@ -95,16 +108,16 @@ yargs(hideBin(process.argv))
   )
   .command(
     "setkey",
-    "Prompt for a openAI api key",
+    "Prompt for a openAI API key",
     () => {},
     () => setApiKey()
   )
-  .example("$0 setkey", "will ask for an api key")
+  .example("$0 setkey")
   .command(
-    "purify",
-    "Purify a json file of projects (potentially generated with $0 gen). this maintains all the projects that have CFTitle and CFDescription equals to zero and removes unnecessary fields.",
+    "purify <input_file> <output_file>",
+    "Purify a json file of projects (potentially generated with $0 gen). this keeps only the projects that have CFTitle and CFDescription equals to zero and removes unnecessary fields",
     () => {},
-    (argv) => purifyProjects(posArgs(argv))
+    (argv) => purifyProjects(argv.inputFile, argv.outputFile)
   )
   .example(
     "$0 purify impure.json purified.json",
