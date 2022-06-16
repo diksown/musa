@@ -39,7 +39,8 @@ class Musagen {
       max_tokens,
       temperature,
     });
-    return response.data.choices[0].text;
+    const { text, finish_reason } = response.data.choices[0];
+    return { text, finish_reason };
   }
 
   async generateProjectFragment(fragmentType, word) {
@@ -47,7 +48,7 @@ class Musagen {
     if (fragmentType === "title") {
       options = {
         prompt: `give me a fun and quirky name about a project involving ${word}.\n`,
-        max_tokens: 6,
+        max_tokens: 9,
       };
     } else if (fragmentType === "description") {
       options = {
@@ -59,10 +60,9 @@ class Musagen {
     }
 
     let projectFragment = await this.completion(options);
-    projectFragment = projectFragment.replace(/\s+/g, " "); // Remove multiple whitespaces
-    projectFragment = projectFragment.trim(); // Remove whitespaces at borders
+    projectFragment.text = projectFragment.text.replace(/\s+/g, " ").trim();
     if (fragmentType === "title") {
-      projectFragment = projectFragment.replace(/\"/, "");
+      projectFragment.text = projectFragment.text.replace(/\"/g, "");
     }
     return projectFragment;
   }
@@ -111,17 +111,22 @@ class Musagen {
       this.generateProjectFragment("description", word),
     ]);
     const [contentLabelTitle, contentLabelDescription] = await Promise.all([
-      this.contentFilter(title),
-      this.contentFilter(description),
+      this.contentFilter(title.text),
+      this.contentFilter(description.text),
     ]);
 
-    // TODO: Add a check for the "finish_reason" (usually "stop" or "length")
     return {
       word,
-      contentLabelTitle,
-      contentLabelDescription,
-      title,
-      description,
+      title: {
+        text: title.text,
+        content_label: contentLabelTitle,
+        finish_reason: title.finish_reason,
+      },
+      description: {
+        text: description.text,
+        content_label: contentLabelDescription,
+        finish_reason: description.finish_reason,
+      },
     };
   }
 }

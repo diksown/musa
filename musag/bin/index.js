@@ -2,7 +2,6 @@
 
 import Musagen from "../lib/apiwrapper.js";
 import sl from "../lib/sl.js";
-import sleep from "../lib/sleep.js";
 import { CONFIG_FOLDER, CONFIG_FILE } from "../lib/config.js";
 import fs from "fs/promises";
 import yargs from "yargs";
@@ -19,6 +18,20 @@ const saveProject = async (project, outputFileAbsolutePath) => {
   );
 };
 
+const formatSecondsToHuman = (seconds) => {
+  if (!isFinite(seconds)) return "∞";
+
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secondsLeft = Math.floor(seconds % 60);
+
+  const hoursStr = hours > 0 ? `${hours}h ` : "";
+  const minutesStr = minutes > 0 ? `${minutes}m ` : "";
+  const secondsStr = secondsLeft >= 0 ? `${secondsLeft}s` : "";
+
+  return `${hoursStr}${minutesStr}${secondsStr}`;
+};
+
 const generateProjects = async (inputFile, outputFile) => {
   const inputFileAbsolutePath = `${process.cwd()}/${inputFile}`;
   const outputFileAbsolutePath = `${process.cwd()}/${outputFile}`;
@@ -26,7 +39,7 @@ const generateProjects = async (inputFile, outputFile) => {
   try {
     inputFileContent = await fs.readFile(inputFileAbsolutePath);
   } catch (err) {
-    sl.err(`The file '${inputFile}' doesn't exist...`);
+    sl.err(`The file '${inputFile}' doesn't exist.`);
     return;
   }
   try {
@@ -38,14 +51,14 @@ const generateProjects = async (inputFile, outputFile) => {
       JSON.stringify(emptyProjects, null, 2)
     );
   } catch (err) {
-    sl.err(`Couldn't write on file '${outputFile}'...`);
+    sl.err(`Couldn't write on file '${outputFile}'`);
     return;
   }
   const words = inputFileContent
     .toString()
     .split("\n")
     .map((word) => word.trim())
-    .slice(0, 10);
+    .filter((word) => word.length >= 1 && word.length <= 15); // Sanity check
 
   let apiKey;
   try {
@@ -61,12 +74,19 @@ const generateProjects = async (inputFile, outputFile) => {
   // A progress bar like this would look good:
   //  29.4% | ETA: 3.7s | Generating project "water"...
   process.stdout.write("\n");
+  const startTime = Date.now();
   for (const word of words) {
     process.stdout.moveCursor(0, -1);
     process.stdout.clearLine(0);
     const progress = ((currentProject / nProjects) * 100).toFixed(1);
+    const timeElapsed = (Date.now() - startTime) / 1000;
+
+    const etaSeconds =
+      (timeElapsed / currentProject) * (nProjects - currentProject);
+    const elapsedFormatted = formatSecondsToHuman(timeElapsed);
+    const etaFormatted = formatSecondsToHuman(etaSeconds);
     process.stdout.write(
-      `${progress}% | Generating project related to "${word}"...\n`
+      `${progress}% | Passed: ${elapsedFormatted} | ETA: ${etaFormatted} | Generating project related to "${word}"...\n`
     );
     const project = await musaApi.generateProject(word);
     await saveProject(project, outputFileAbsolutePath);
@@ -74,7 +94,12 @@ const generateProjects = async (inputFile, outputFile) => {
   }
   process.stdout.moveCursor(0, -1);
   process.stdout.clearLine(0);
-  process.stdout.write(`Done! Stored projects on '${outputFile}'.\n`);
+  const elapsed = (Date.now() - startTime) / 1000;
+  process.stdout.write(
+    `[${formatSecondsToHuman(
+      elapsed
+    )}] Done! Stored projects on '${outputFile}'\n`
+  );
 };
 
 const generateProjectFromWord = async (word) => {
@@ -87,9 +112,9 @@ const generateProjectFromWord = async (word) => {
   }
   const musaApi = new Musagen(apiKey);
   const project = await musaApi.generateProject(word);
-  console.log(project.title);
+  console.log(project.title.text);
   console.log();
-  console.log(project.description);
+  console.log(project.description.text);
 };
 
 const hideApiKey = (str) => {
@@ -134,14 +159,47 @@ const getApiKey = async () => {
   }
 };
 
-const purifyProjects = (inputFile, outputFile) => {
-  console.log("Purifying projects...");
-  // Get a input json and a output json name
-  // Check if the input json exists
-  // Try to parse the json
-  // Output the purified json to the output json
-  // If everything goes well, print a success message
-  // Otherwise, print an error message
+const purifyProjects = async (inputFile, outputFile) => {
+  const inputFileAbsolutePath = `${process.cwd()}/${inputFile}`;
+  const outputFileAbsolutePath = `${process.cwd()}/${outputFile}`;
+  let inputFileContent;
+  try {
+    inputFileContent = await fs.readFile(inputFileAbsolutePath);
+  } catch (err) {
+    sl.err(`The file '${inputFile}' doesn't exist...`);
+    return;
+  }
+  let purifiedProjects;
+  try {
+    const projects = JSON.parse(inputFileContent).projects;
+    purifiedProjects = projects
+      .filter((project) => {
+        return (
+          project.title.content_label === 0 &&
+          project.description.content_label === 0
+        );
+      })
+      .map((project) => {
+        return {
+          title: project.title.text,
+          description: project.description.text,
+        };
+      });
+  } catch {
+    sl.err(`Couldn't parse file '${inputFile}'`);
+    return;
+  }
+  const purifiedProjectsJson = JSON.stringify(
+    { projects: purifiedProjects },
+    null,
+    2
+  );
+  try {
+    await fs.writeFile(outputFileAbsolutePath, purifiedProjectsJson);
+  } catch {
+    sl.err(`Couldn't write on file '${outputFile}'`);
+    return;
+  }
 };
 
 yargs(hideBin(process.argv))
@@ -172,7 +230,7 @@ yargs(hideBin(process.argv))
   .example("$0 setkey")
   .command(
     "purify <input_file> <output_file>",
-    "Purify a json file of projects (potentially generated with $0 gen). this keeps only the projects that have CFTitle and CFDescription equals to zero and removes unnecessary fields",
+    "Purify a json file of projects (potentially generated with $0 gen). this keeps only the projects that are labeled as safe and removes unnecessary fields",
     () => {},
     (argv) => purifyProjects(argv.input_file, argv.output_file)
   )
