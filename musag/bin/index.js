@@ -2,18 +2,79 @@
 
 import Musagen from "../lib/apiwrapper.js";
 import sl from "../lib/sl.js";
+import sleep from "../lib/sleep.js";
 import { CONFIG_FOLDER, CONFIG_FILE } from "../lib/config.js";
 import fs from "fs/promises";
 import yargs from "yargs";
 import inquirer from "inquirer";
 import { hideBin } from "yargs/helpers";
 
-const generateProjects = (inputFile, outputFile) => {
-  console.log("Generating projects...");
-  // Check if number of arguments is correct
-  // Get a list of words as a input txt and a output json name
-  // Check if the input exists
-  // Generate projects while displaying a progress bar
+const saveProject = async (project, outputFileAbsolutePath) => {
+  const outputFileContent = await fs.readFile(outputFileAbsolutePath);
+  const outputFileJson = JSON.parse(outputFileContent);
+  outputFileJson.projects.push(project);
+  await fs.writeFile(
+    outputFileAbsolutePath,
+    JSON.stringify(outputFileJson, null, 2)
+  );
+};
+
+const generateProjects = async (inputFile, outputFile) => {
+  const inputFileAbsolutePath = `${process.cwd()}/${inputFile}`;
+  const outputFileAbsolutePath = `${process.cwd()}/${outputFile}`;
+  let inputFileContent;
+  try {
+    inputFileContent = await fs.readFile(inputFileAbsolutePath);
+  } catch (err) {
+    sl.err(`The file '${inputFile}' doesn't exist...`);
+    return;
+  }
+  try {
+    const emptyProjects = {
+      projects: [],
+    };
+    await fs.writeFile(
+      outputFileAbsolutePath,
+      JSON.stringify(emptyProjects, null, 2)
+    );
+  } catch (err) {
+    sl.err(`Couldn't write on file '${outputFile}'...`);
+    return;
+  }
+  const words = inputFileContent
+    .toString()
+    .split("\n")
+    .map((word) => word.trim())
+    .slice(0, 10);
+
+  let apiKey;
+  try {
+    apiKey = await getApiKey();
+  } catch {
+    sl.err("No API key found. Set one with 'musag setkey'");
+    return;
+  }
+  const musaApi = new Musagen(apiKey);
+
+  const nProjects = words.length;
+  let currentProject = 0;
+  // A progress bar like this would look good:
+  //  29.4% | ETA: 3.7s | Generating project "water"...
+  process.stdout.write("\n");
+  for (const word of words) {
+    process.stdout.moveCursor(0, -1);
+    process.stdout.clearLine(0);
+    const progress = ((currentProject / nProjects) * 100).toFixed(1);
+    process.stdout.write(
+      `${progress}% | Generating project related to "${word}"...\n`
+    );
+    const project = await musaApi.generateProject(word);
+    await saveProject(project, outputFileAbsolutePath);
+    currentProject++;
+  }
+  process.stdout.moveCursor(0, -1);
+  process.stdout.clearLine(0);
+  process.stdout.write(`Done! Stored projects on '${outputFile}'.\n`);
 };
 
 const generateProjectFromWord = async (word) => {
@@ -21,7 +82,7 @@ const generateProjectFromWord = async (word) => {
   try {
     apiKey = await getApiKey();
   } catch {
-    sl.err("No API key found. Set one with 'musag setapikey'");
+    sl.err("No API key found. Set one with 'musag setkey'");
     return;
   }
   const musaApi = new Musagen(apiKey);
@@ -36,7 +97,7 @@ const hideApiKey = (str) => {
 };
 
 const setApiKey = async () => {
-  console.log("Setting API key...");
+  sl.log("Setting API key...");
   const userInput = await inquirer.prompt({
     type: "input",
     name: "apikey",
