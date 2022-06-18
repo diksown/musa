@@ -7,6 +7,22 @@ class Musagen {
   }
 
   async rawCompletion(options) {
+    if ("prompt" in options === false) {
+      throw new Error("Missing prompt");
+    }
+
+    const defaultOptions = {
+      model: "text-davinci-002",
+      max_tokens: 16,
+      temperature: 0,
+    };
+
+    for (const key in defaultOptions) {
+      if (key in options === false) {
+        options[key] = defaultOptions[key];
+      }
+    }
+
     const response = await this.api.createCompletion(options);
     return response;
   }
@@ -27,18 +43,8 @@ class Musagen {
     }
   }
 
-  async completion({
-    prompt,
-    model = "text-davinci-002",
-    max_tokens = 16,
-    temperature = 0,
-  }) {
-    const response = await this.api.createCompletion({
-      model,
-      prompt,
-      max_tokens,
-      temperature,
-    });
+  async completion(options) {
+    const response = await this.rawCompletion(options);
     const { text, finish_reason } = response.data.choices[0];
     return { text, finish_reason };
   }
@@ -47,12 +53,19 @@ class Musagen {
     let options = {};
     if (fragmentType === "title") {
       options = {
+        frequency_penalty: 1,
         prompt: `give me a punny and quirky name about a project involving ${word}.\n`,
+        // prompt: `Give me a short and punny name to a project about ${word}.\nProject name:`,
         max_tokens: 9,
+        logit_bias: {
+          1628: -100, // remove token " project". TODO: remove variations
+        },
       };
     } else if (fragmentType === "description") {
       options = {
-        prompt: `give me an ideia to a creative programming project about ${word}.\n`,
+        //presence_penalty: 2,
+        //frequency_penalty: 1,
+        prompt: `Give me an ideia to a creative programming project about ${word}.\n`,
         max_tokens: 128,
       };
     } else {
