@@ -51,20 +51,22 @@ class Musagen {
 
   async generateProjectFragment(fragmentType, word) {
     let options = {};
+    let logitBias = -10; // Logit bias that will be used to reduce the presence of some tokens
     if (fragmentType === "title") {
       options = {
-        frequency_penalty: 1,
-        prompt: `give me a punny and quirky name about a project involving ${word}.\n`,
-        // prompt: `Give me a short and punny name to a project about ${word}.\nProject name:`,
+        prompt: `Give me a short and punny name to a project about ${word}.\nProject name:`,
         max_tokens: 9,
+        // Makes some tokens less likely to appear.
+        // Avoid uninsteresting titles like "The Water Project"
         logit_bias: {
-          1628: -100, // remove token " project". TODO: remove variations
+          1628: logitBias, // " project"
+          4935: logitBias, // " Project"
+          16302: logitBias, // "project"
+          16775: logitBias, // "Project"
         },
       };
     } else if (fragmentType === "description") {
       options = {
-        //presence_penalty: 2,
-        //frequency_penalty: 1,
         prompt: `Give me an ideia to a creative programming project about ${word}.\n`,
         max_tokens: 128,
       };
