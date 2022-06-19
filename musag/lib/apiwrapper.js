@@ -1,9 +1,30 @@
 import { Configuration, OpenAIApi } from "openai";
+import sleep from "./sleep.js";
 
 class Musagen {
   constructor(apiKey) {
     const configuration = new Configuration({ apiKey });
     this.api = new OpenAIApi(configuration);
+  }
+
+  async keepTrying(func, maxTries = 15, logfunc) {
+    let tries = 0;
+    let timeToWait = 100;
+    while (true) {
+      try {
+        return await func();
+      } catch (e) {
+        if (tries >= maxTries) {
+          throw new Error(`Failed after ${tries} tries.`, { cause: e });
+        }
+        if (logfunc) {
+          logfunc();
+        }
+        await sleep(timeToWait);
+        timeToWait *= 2;
+        tries++;
+      }
+    }
   }
 
   async rawCompletion(options) {
