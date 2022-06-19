@@ -7,7 +7,7 @@ class Musagen {
     this.api = new OpenAIApi(configuration);
   }
 
-  async keepTrying(func, maxTries = 15, logfunc) {
+  async keepTrying(func, { maxTries = 15, logfunc = () => {} }) {
     let tries = 0;
     let timeToWait = 100;
     while (true) {
@@ -96,11 +96,16 @@ class Musagen {
     }
 
     let projectFragment = await this.completion(options);
-    projectFragment.text = projectFragment.text.replace(/\s+/g, " ").trim();
     if (fragmentType === "title") {
       projectFragment.text = projectFragment.text.replace(/\"/g, "");
     }
-    return projectFragment;
+    projectFragment.text = projectFragment.text.replace(/\s+/g, " ").trim();
+    let content_label = await this.contentFilter(projectFragment.text);
+    return {
+      text: projectFragment.text,
+      content_label,
+      finish_reason: projectFragment.finish_reason,
+    };
   }
 
   // 0 - The text is safe.
@@ -146,23 +151,11 @@ class Musagen {
       this.generateProjectFragment("title", word),
       this.generateProjectFragment("description", word),
     ]);
-    const [contentLabelTitle, contentLabelDescription] = await Promise.all([
-      this.contentFilter(title.text),
-      this.contentFilter(description.text),
-    ]);
 
     return {
       word,
-      title: {
-        text: title.text,
-        content_label: contentLabelTitle,
-        finish_reason: title.finish_reason,
-      },
-      description: {
-        text: description.text,
-        content_label: contentLabelDescription,
-        finish_reason: description.finish_reason,
-      },
+      title,
+      description,
     };
   }
 }
