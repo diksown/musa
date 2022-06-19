@@ -7,7 +7,12 @@ class Musagen {
     this.api = new OpenAIApi(configuration);
   }
 
-  async keepTrying(func, { maxTries = 15, logfunc = () => {} }) {
+  async keepTrying(func, options) {
+    const { maxTries, logfunc } = {
+      maxTries: 15,
+      logfunc: () => {},
+      ...options,
+    };
     let tries = 0;
     let timeToWait = 100;
     while (true) {

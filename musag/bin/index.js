@@ -88,7 +88,9 @@ const generateProjects = async (inputFile, outputFile) => {
     process.stdout.write(
       `${progress}% | Passed: ${elapsedFormatted} | ETA: ${etaFormatted} | Generating project related to "${word}"...\n`
     );
-    const project = await musaApi.generateProject(word);
+    const project = await musaApi.keepTrying(() =>
+      musaApi.generateProject(word)
+    );
     await saveProject(project, outputFileAbsolutePath);
     currentProject++;
   }
