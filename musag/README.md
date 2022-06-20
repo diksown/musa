@@ -15,7 +15,6 @@ Installing with npm:
 
 ```console
 $ npm install -g musag
-$ musag --help
 ```
 
 ## Usage
@@ -32,7 +31,7 @@ Setting API key...
 
 ### Generating projects
 
-Use `musag theme <project_theme>` generate a project based on a theme.
+Use `musag theme <project_theme>` to generate a project based on a theme.
 
 ```console
 $ musag theme ship
@@ -44,26 +43,74 @@ the ship's current location, the weather conditions, the tides,
 and any other potential hazards.
 ```
 
-Example with a theme with multiple themes:
+Example with a theme with multiple words:
 
 ```console
-$ musag theme "solar panel"
-Solar Power to the People!
+$ musag theme "hip hop"
+Hip Hop Hooray!
 
-Design a program that can calculate the optimal angle for
-a solar panel to capture the most sunlight possible.
+Design a program that generates random hip hop lyrics.
 ```
 
 ### Advanced commands
 
-To generate projects from a file with a list of themes:
+The command `musag gen` is a more complete version of `musag theme`.
+It takes a the of themes (one theme per line) as a input and write to a json file.
+
+Usage: `musag gen <theme_list_file> <output_file>`
+
+```console
+$ cat themes.txt
+ship
+hip hop
+```
+
+Running `musag gen`:
 
 ```console
 $ musag gen themes.txt generated.json
+0.0% | Passed: 0s | ETA: ∞ | Generating project related to "ship"...
+50.0% | Passed: 5s | ETA: 5s | Generating project related to "hip hop"...
+[8s] Done! Stored projects on 'generated.json'
+$ cat generated.json
+{
+  "projects": [
+    {
+      "theme": "ship",
+      "title": {
+        "text": "Sail Away",
+        "content_label": 0,
+        "finish_reason": "stop"
+      },
+      "description": {
+        "text": "Design a program (...)", // Shortened for readability
+        "content_label": 0,
+        "finish_reason": "stop"
+      }
+    },
+    {
+      "theme": "hip hop",
+      ...
+    }
+  ]
+}
 ```
 
 The `generated.json` above will have additional info about the projects, such as the `content_label` and `stop_reason`. You can filter these using the `purify` command:
 
 ```console
 $ musag purify generated.json purified.json
+$ cat purified.json
+{
+  "projects": [
+    {
+      "title": "Sail Away",
+      "description": "Design a program that can be used to (...)"
+    },
+    {
+      "title": "Hip Hop Hooray!",
+      "description": "Design a program that generates random hip hop lyrics."
+    }
+  ]
+}
 ```
