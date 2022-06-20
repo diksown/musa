@@ -32,10 +32,10 @@ Setting API key...
 
 ### Generating projects
 
-Use `musag word <project_word>` generate a project based on a word.
+Use `musag theme <project_theme>` generate a project based on a theme.
 
 ```console
-$ musag word ship
+$ musag theme ship
 Sail Away
 
 Design a program that can help ship captains navigate through
@@ -44,10 +44,10 @@ the ship's current location, the weather conditions, the tides,
 and any other potential hazards.
 ```
 
-Example with a theme with multiple words:
+Example with a theme with multiple themes:
 
 ```console
-$ musag word "solar panel"
+$ musag theme "solar panel"
 Solar Power to the People!
 
 Design a program that can calculate the optimal angle for
@@ -56,10 +56,10 @@ a solar panel to capture the most sunlight possible.
 
 ### Advanced commands
 
-To generate projects from a file with a list of words:
+To generate projects from a file with a list of themes:
 
 ```console
-$ musag gen words.txt generated.json
+$ musag gen themes.txt generated.json
 ```
 
 The `generated.json` above will have additional info about the projects, such as the `content_label` and `stop_reason`. You can filter these using the `purify` command:

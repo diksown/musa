@@ -75,12 +75,12 @@ class Musagen {
     return { text, finish_reason };
   }
 
-  async generateProjectFragment(fragmentType, word) {
+  async generateProjectFragment(fragmentType, theme) {
     let options = {};
     let logitBias = -10; // Logit bias that will be used to reduce the presence of some tokens
     if (fragmentType === "title") {
       options = {
-        prompt: `Give me a short and punny name to a project about ${word}.\nProject name:`,
+        prompt: `Give me a short and punny name to a project about ${theme}.\nProject name:`,
         max_tokens: 9,
         // Makes some tokens less likely to appear.
         // Avoid uninsteresting titles like "The Water Project"
@@ -93,7 +93,7 @@ class Musagen {
       };
     } else if (fragmentType === "description") {
       options = {
-        prompt: `Give me an ideia to a creative programming project about ${word}.\n`,
+        prompt: `Give me an ideia to a creative programming project about ${theme}.\n`,
         max_tokens: 128,
       };
     } else {
@@ -151,14 +151,14 @@ class Musagen {
     return parseInt(outputLabel);
   }
 
-  async generateProject(word) {
+  async generateProject(theme) {
     const [title, description] = await Promise.all([
-      this.generateProjectFragment("title", word),
-      this.generateProjectFragment("description", word),
+      this.generateProjectFragment("title", theme),
+      this.generateProjectFragment("description", theme),
     ]);
 
     return {
-      word,
+      theme,
       title,
       description,
     };

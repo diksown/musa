@@ -54,11 +54,11 @@ const generateProjects = async (inputFile, outputFile) => {
     sl.err(`Couldn't write on file '${outputFile}'`);
     return;
   }
-  const words = inputFileContent
+  const themes = inputFileContent
     .toString()
     .split("\n")
     .map((word) => word.trim())
-    .filter((word) => word.length >= 1 && word.length <= 15); // Sanity check
+    .filter((word) => word.length >= 1); // Sanity check
 
   let apiKey;
   try {
@@ -69,13 +69,13 @@ const generateProjects = async (inputFile, outputFile) => {
   }
   const musaApi = new Musagen(apiKey);
 
-  const nProjects = words.length;
+  const nProjects = themes.length;
   let currentProject = 0;
   // A progress bar like this would look good:
   //  29.4% | ETA: 3.7s | Generating project "water"...
   process.stdout.write("\n");
   const startTime = Date.now();
-  for (const word of words) {
+  for (const theme of themes) {
     process.stdout.moveCursor(0, -1);
     process.stdout.clearLine(0);
     const progress = ((currentProject / nProjects) * 100).toFixed(1);
@@ -86,10 +86,10 @@ const generateProjects = async (inputFile, outputFile) => {
     const elapsedFormatted = formatSecondsToHuman(timeElapsed);
     const etaFormatted = formatSecondsToHuman(etaSeconds);
     process.stdout.write(
-      `${progress}% | Passed: ${elapsedFormatted} | ETA: ${etaFormatted} | Generating project related to "${word}"...\n`
+      `${progress}% | Passed: ${elapsedFormatted} | ETA: ${etaFormatted} | Generating project related to "${theme}"...\n`
     );
     const project = await musaApi.keepTrying(() =>
-      musaApi.generateProject(word)
+      musaApi.generateProject(theme)
     );
     await saveProject(project, outputFileAbsolutePath);
     currentProject++;
@@ -104,7 +104,11 @@ const generateProjects = async (inputFile, outputFile) => {
   );
 };
 
-const generateProjectFromWord = async (word) => {
+const generateProjectFromTheme = async (theme) => {
+  theme = theme.trim();
+  if (theme.length === 0) {
+    return;
+  }
   let apiKey;
   try {
     apiKey = await getApiKey();
@@ -113,7 +117,19 @@ const generateProjectFromWord = async (word) => {
     return;
   }
   const musaApi = new Musagen(apiKey);
-  const project = await musaApi.generateProject(word);
+  const project = await musaApi.generateProject(theme);
+
+  const maxLabel = Math.max(
+    project.title.content_label,
+    project.description.content_label
+  );
+  if (maxLabel == 1) {
+    sl.warn("CAUTION: This text could be talking about a sensitive topic.");
+    console.log();
+  } else if (maxLabel == 2) {
+    sl.err("WARNING: This text could contain offensive or harmful content.");
+    console.log();
+  }
   console.log(project.title.text);
   console.log();
   console.log(project.description.text);
@@ -208,20 +224,20 @@ yargs(hideBin(process.argv))
   .usage("Usage: $0 <command> [options]")
   .command(
     "gen <input_file> <output_file>",
-    "Generate projects for all words inside a file and output it in a json format",
+    "Generate projects for all themes inside a file and output it in a json format",
     () => {},
     (argv) => generateProjects(argv.input_file, argv.output_file)
   )
-  .example("$0 gen words.txt output.json")
+  .example("$0 gen themes.txt output.json")
   .command(
-    "word <project_word>",
-    "Display a project generated based on the word <project_word>",
+    "theme <project_theme>",
+    "Display a project generated based on the theme <project_theme>",
     () => {},
-    (argv) => generateProjectFromWord(argv.project_word)
+    (argv) => generateProjectFromTheme(argv.project_theme)
   )
   .example(
-    "$0 word water",
-    'Generate a project (title + description) using the word "water"'
+    "$0 theme water",
+    'Generate a project (title + description) using the theme "water"'
   )
   .command(
     "setkey",

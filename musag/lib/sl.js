@@ -6,11 +6,14 @@ class sl {
   static log(msg) {
     console.log(chalk.blue(msg));
   }
-  static err(msg) {
-    console.log(chalk.red(msg));
-  }
   static ok(msg) {
     console.log(chalk.green(msg));
+  }
+  static warn(msg) {
+    console.log(chalk.yellow(msg));
+  }
+  static err(msg) {
+    console.log(chalk.red(msg));
   }
 }
 
