@@ -16,8 +16,6 @@
 
 ## Features
 
-<img align="right" src="https://i.ibb.co/PN40y1Q/image.png" width="250px">
-
 <b>🔮 Choose your project. Make it yours.</b>  
 <i>1000+ project ideas to choose from.</i>
 
