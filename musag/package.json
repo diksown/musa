@@ -1,7 +1,7 @@
 {
   "name": "musag",
   "version": "1.0.0",
-  "description": "A generator of programming prompts using the OpenAI API.",
+  "description": "CLI for generating programming projects ideas with GPT3",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
