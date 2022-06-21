@@ -1,13 +1,35 @@
-# Generator
+# musag
 
-Musa features a CLI for generating your own projects. It's called `musag` (**musa g**enerator).
-In order to use it, you need access to the GPT3 API.
+**musag** is a CLI tool used by [Musa (check the website!)](https://musa.dikson.xyz) to generate programming project ideas using GPT3, a natural language generation model.
 
-In order to have access to GPT3 and get your API key, you can register an account on the OpenAI website.
+It takes a theme given by the user and generate a text description of the project based on it.
 
-> ⚠️ To use the API, you need to abide by OpenAI’s Content Policy.
->
-> ⚠️ You can find the Content Policy here:
+## GPT3 API
+
+<details>
+<summary><b>To use musag, you need access to GPT3 API and adhere by its Terms & Policies. Click for more information.</b></summary>
+
+### API Key
+
+In order to generate content, musag uses your GPT3 API key. You can get one by registering an account on [OpenAI's Website](https://openai.com/api/).
+
+### Terms & Policies
+
+To use the OpenAI's GPT3 API, you must follow [OpenAI's API Terms & Policies](https://openai.com/api/policies/terms/). In particular, users are prohibited from knowingly generating — or allowing others to knowingly generate some categories of content, such as **hate, harassment, violence, self-harm, sexual, political, deception and malware**.
+
+To mitigate the possible risks of AI-generated content, OpenAI has set a policy on permitted sharing of generated content. You can read it on [OpenAI's API Sharing & Publication Policy](https://openai.com/api/policies/sharing-publication/).
+
+### Pricing
+
+The API is paid, but new accounts have $18 in credits to spend on the first three months.
+
+Generating projects with musag uses credits. The amount of credits is variable and depend on factors like the length of the theme and generated project.
+
+If you need a rule of thumb, projects on [Musa's website]https://musa.dikson.xyz) used about 85 tokens each, so it costs around $0.005 to be generated.
+
+For more information about pricing, see [OpenAI's API Pricing](https://openai.com/api/pricing/).
+
+</details>
 
 ## Installation
 
@@ -43,7 +65,7 @@ the ship's current location, the weather conditions, the tides,
 and any other potential hazards.
 ```
 
-Example with a theme with multiple words:
+Generating a theme with multiple words:
 
 ```console
 $ musag theme "hip hop"
