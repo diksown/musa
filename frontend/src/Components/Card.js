@@ -31,7 +31,7 @@ const Presentation = () => {
     <>
       <div className="PresentationTitle">
         Let<span className="GradientHighlight"> Artificial Intelligence </span>
-        choose your next programming project 🚀
+        choose your next programming project 🧞‍♀️
       </div>
       <div className="PresentationDescription">
         Musa is a generator of coding project ideas powered by GPT3, a ML model
