@@ -1,4 +1,4 @@
-.ShareButton {
+.CopyButton {
   top: var(--offset-nav);
   right: var(--offset-nav);
 }

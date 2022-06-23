@@ -14,11 +14,7 @@ const Footer = () => {
           />
         </a>{" "}
         ·{" "}
-        <a
-          href="https://github.com/diksown/musa/blob/main/docs/REPORTING.md"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://github.com/diksown/musa/blob/main/docs/REPORTING.md">
           <span className="Report">
             Report
             <MdFlag size={20} style={{ verticalAlign: "bottom" }} />
@@ -27,12 +23,7 @@ const Footer = () => {
       </div>
       <div>
         Made with <FaHeart size={18} style={{ verticalAlign: "bottom" }} /> by{" "}
-        <a
-          class="GithubProfile"
-          href="https://github.com/diksown"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a class="GithubProfile" href="https://github.com/diksown">
           @diksown
         </a>{" "}
       </div>

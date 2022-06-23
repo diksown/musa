@@ -1,7 +1,7 @@
 import "./Card.css";
 import findProject from "../Utils/projectShuffler";
 import { useEffect } from "react";
-import ShareButton from "./ShareButton";
+import CopyButton from "./CopyButton";
 import BackButton from "./BackButton";
 
 const ProjectTitle = ({ title }) => {
@@ -68,7 +68,7 @@ const Card = ({ projectNumber, setProjectNumber }) => {
   return (
     <>
       <div className="Card" onClick={() => setProjectNumber(projectNumber + 1)}>
-        {projectNumber > 0 && <ShareButton projectNumber={projectNumber} />}
+        {projectNumber > 0 && <CopyButton projectNumber={projectNumber} />}
         {projectNumber > 1 && (
           <BackButton
             projectNumber={projectNumber}

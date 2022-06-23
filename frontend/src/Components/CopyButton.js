@@ -1,22 +1,23 @@
 import "./NavButton.css";
-import "./ShareButton.css";
-import { MdShare } from "react-icons/md";
+import "./CopyButton.css";
+import { MdContentCopy } from "react-icons/md";
+
 import { IconContext } from "react-icons";
 import toast from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import findProject from "../Utils/projectShuffler";
 
-const ShareIcon = () => {
+const CopyIcon = () => {
   return (
     <IconContext.Provider value={{ size: "2.5rem" }}>
       <div>
-        <MdShare />
+        <MdContentCopy />
       </div>
     </IconContext.Provider>
   );
 };
 
-const ShareButton = ({ projectNumber }) => {
+const CopyButton = ({ projectNumber }) => {
   const getFormattedProject = (projectNumber) => {
     const { title, description } = findProject(projectNumber);
     const projectText = title + "\n\n" + description;
@@ -34,11 +35,11 @@ const ShareButton = ({ projectNumber }) => {
 
   return (
     <CopyToClipboard text={textToCopy}>
-      <button className="ShareButton NavButton" onClick={handleClick}>
-        <ShareIcon />
+      <button className="CopyButton NavButton" onClick={handleClick}>
+        <CopyIcon />
       </button>
     </CopyToClipboard>
   );
 };
 
-export default ShareButton;
+export default CopyButton;
