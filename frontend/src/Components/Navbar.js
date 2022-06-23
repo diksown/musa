@@ -1,6 +1,5 @@
 import "./Navbar.css";
 import { FaGithub } from "react-icons/fa";
-import { IconContext } from "react-icons";
 import MusaLogoImg from "../Assets/Images/musa_logo";
 
 const MusaImg = () => {
@@ -25,13 +24,7 @@ const MusaLogo = () => {
 };
 
 const GithubIcon = () => {
-  return (
-    <IconContext.Provider value={{ size: "50px" }}>
-      <div>
-        <FaGithub />
-      </div>
-    </IconContext.Provider>
-  );
+  return <FaGithub size="50" />;
 };
 
 const GithubButton = () => {

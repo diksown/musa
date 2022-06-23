@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+
 .Footer {
+  color: rgb(49, 28, 60);
   font-size: 16px;
   margin: 20px 10px 10px;
   text-align: center;
@@ -6,4 +9,13 @@
 
 .Footer a {
   color: inherit;
+  text-underline-offset: 2px;
+}
+
+.Footer > * {
+  margin-top: 2px;
+}
+
+.GithubProfile {
+  font-family: "IBM Plex Mono", monospace;
 }
