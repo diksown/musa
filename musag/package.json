@@ -4,7 +4,7 @@
   "description": "CLI for generating programming projects ideas with GPT3",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "bin": {
     "musag": "bin/index.js"
