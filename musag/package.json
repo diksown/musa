@@ -16,5 +16,11 @@
     "inquirer": "^8.2.4",
     "openai": "^3.0.0",
     "yargs": "^17.5.1"
-  }
+  },
+  "keywords": [
+    "openai",
+    "gpt3",
+    "gpt-3",
+    "cli"
+  ]
 }
