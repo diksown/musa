@@ -29,12 +29,7 @@ const GithubIcon = () => {
 
 const GithubButton = () => {
   return (
-    <a
-      href="https://github.com/diksown/musa"
-      target="_blank"
-      rel="noreferrer"
-      className="GithubButton"
-    >
+    <a href="https://github.com/diksown/musa" className="GithubButton">
       <GithubIcon />
     </a>
   );
