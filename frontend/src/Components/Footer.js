@@ -23,7 +23,7 @@ const Footer = () => {
       </div>
       <div>
         Made with <FaHeart size={18} style={{ verticalAlign: "bottom" }} /> by{" "}
-        <a class="GithubProfile" href="https://github.com/diksown">
+        <a className="GithubProfile" href="https://github.com/diksown">
           @diksown
         </a>{" "}
       </div>
