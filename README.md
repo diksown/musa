@@ -6,9 +6,15 @@
   </p>
   
   <div>
-    <img src="https://img.shields.io/github/license/facebook/react?color=fcf&style=flat-square">
-    <img src="https://img.shields.io/github/stars/facebook/react?color=fcf&style=flat-square"> <!-- edit this later -->
-    <img src="https://img.shields.io/github/followers/diksown?color=fcf&label=follow%20%40diksown&logo=github&style=flat-square">
+    <a href="https://github.com/diksown/musa/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/facebook/react?color=fcf&style=flat-square">
+    </a>
+    <a href="https://github.com/diksown/musa/stargazers">
+      <img src="https://img.shields.io/github/stars/facebook/react?color=fcf&style=flat-square">
+    </a>
+    <a href="https://github.com/diksown">
+      <img src="https://img.shields.io/github/followers/diksown?color=fcf&label=follow%20%40diksown&logo=github&style=flat-square">
+    </a>
   </div>
   
   <i>🧞‍♀️ Discover AI-generated programming project ideas</i>
