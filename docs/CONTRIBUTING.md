@@ -2,19 +2,19 @@
 
 Thank you for taking the time to improve Musa!
 
-In this section, you can find guidelines on how to contribute to the project.
+In this section, you can find the guidelines on how to contribute to the project.
 
-[Reporting projects]() · [Issues]() · [Pull requests]()
+[Reporting projects](#reporting-projects) · [Issues](#issues) · [Pull requests](#pull-requests)
 
 ## Reporting projects
 
-All the projects in the Musa website were carefully processed by [a content filter tweaked to be on the safe side]. However, the filter is not perfect. If you find a project that you think should be removed, you can report it by opening a new issue on the repository describing the project and the reason you reported, if necessary. There is a [project reporting template]() avaliable on the issues page.
+If you found a project that you think is potentially harmful in some way and should be removed, you can report it by opening a new issue on the repository describing the project and the reason why it was reported, if necessary. There is a [project reporting template]() avaliable on the issues page.
 
 > 💡 Tip: You can copy the project text using the copy button in the top right corner of the card.
 
-The following categories of contents (borrowed from [OpenAI's Content policy](https://beta.openai.com/docs/usage-guidelines/content-policy)). Any project in one of these categories will be removed from the repository.
+The following categories of content (borrowed from [OpenAI's Content policy](https://beta.openai.com/docs/usage-guidelines/content-policy)) aren't permitted. If you see a project that incites any of these categories, please report it so it can be removed from the website.
 
-This list is not exhaustive. If you see a project that you think should be removed for some reason, please let us know!
+This list is not exhaustive. If you see a project that you think should be removed for some other reason, please let us know!
 
 | Category   | Description                                                                                                                                                     |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,6 +29,10 @@ This list is not exhaustive. If you see a project that you think should be remov
 | Malware    | Content that attempts to generate ransomware, keyloggers, viruses, or other software intended to impose some level of harm.                                     |
 
 ## Issues
+
+You can open an issue with the [project reporting template]() [to report a project].
+
+Feel free to open issues for other problems, such as bugs or feature requests.
 
 ## Pull requests
 
