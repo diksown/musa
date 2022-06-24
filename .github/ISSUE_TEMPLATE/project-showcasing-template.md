@@ -2,7 +2,7 @@
 name: Project Showcasing Template
 about: Showcase your Musa-inspired project!
 title: Showcasing project
-labels: ''
+labels: showcase
 assignees: ''
 
 ---
