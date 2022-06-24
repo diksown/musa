@@ -8,7 +8,7 @@ In this section, you can find the guidelines on how to contribute to the project
 
 ## Reporting projects
 
-If you found a project suggestion that you think is potentially harmful in some way and should be removed, you can report it by opening a new issue on the repository using the [Project Report Template](https://github.com/diksown/musa/issues/new?template=project-report-template.md) describing the project and the reason why it was reported, if necessary.
+If you found a project suggestion that you think is potentially harmful in some way and should be removed, you can report it by opening a new issue on the repository using the [Project Report Template](https://github.com/diksown/musa/issues/new?assignees=&labels=project+report&template=project-report-template.md&title=Reporting+project) describing the project and the reason why it was reported, if necessary.
 
 > 💡 Tip: You can copy the project text using the copy button in the top right corner of the card!
 
@@ -32,7 +32,7 @@ This list is not exhaustive. If you see a project that you think should be remov
 
 You aren't required to mention Musa on your project, but we would love to see what have been created by the community! 👯
 
-To let us know that you have been inspired by Musa and display your project to others, you can submit an issue using the [Project Showcase Template]() with a link to your project and the features you implemented.
+To let us know that you have been inspired by Musa and display your project to others, you can submit an issue using the [Project Showcase Template](https://github.com/diksown/musa/issues/new?assignees=&labels=showcase&template=project-showcasing-template.md&title=Showcasing+project) with a link to your project and the features you implemented.
 
 We wish you a happy coding!
 
