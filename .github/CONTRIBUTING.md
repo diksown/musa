@@ -2,13 +2,13 @@
 
 Thank you for taking the time to improve Musa!
 
-In this section, you can find the guidelines on how to contribute to the this project.
+In this section, you can find the guidelines on how to contribute to the project.
 
 [Reporting projects](#reporting-projects) · [Showcasing your project](#showcasing-your-project) · [Issues](#issues) · [Pull requests](#pull-requests)
 
 ## Reporting projects
 
-If you found a project that you think is potentially harmful in some way and should be removed, you can report it by opening a new issue on the repository using the [Project Report Template](https://github.com/diksown/musa/issues/new?template=project-report-template.md) describing the project and the reason why it was reported, if necessary.
+If you found a project suggestion that you think is potentially harmful in some way and should be removed, you can report it by opening a new issue on the repository using the [Project Report Template](https://github.com/diksown/musa/issues/new?template=project-report-template.md) describing the project and the reason why it was reported, if necessary.
 
 > 💡 Tip: You can copy the project text using the copy button in the top right corner of the card!
 
@@ -38,7 +38,7 @@ We wish you a happy coding!
 
 ## Issues
 
-You are are welcome to open issues for other reasons, such as bugs or feature requests.
+You are welcome to open issues for other reasons, such as bugs or feature requests.
 
 ## Pull requests
 

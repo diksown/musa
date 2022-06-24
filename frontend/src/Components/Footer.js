@@ -14,7 +14,7 @@ const Footer = () => {
           />
         </a>{" "}
         ·{" "}
-        <a href="https://github.com/diksown/musa/blob/main/docs/REPORTING.md">
+        <a href="https://github.com/diksown/musa/blob/main/.github/CONTRIBUTING.md#reporting-projects">
           <span className="Report">
             Report
             <MdFlag size={20} style={{ verticalAlign: "bottom" }} />
