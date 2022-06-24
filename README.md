@@ -29,7 +29,7 @@ Musa (_muse_, in Portuguese) is a website that displays a collection of programm
 ## Features
 
 <b>🔮 Choose your project. Make it yours.</b>  
-<i>1000+ project ideas to choose from.</i>
+<i>+2.5k project ideas to choose from.</i>
 
 <b>🛟 Naming things is hard. Let Musa help.</b>  
 <i>Creative title suggestions in each card.</i>
