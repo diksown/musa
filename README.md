@@ -7,10 +7,10 @@
 
   <div>
     <a href="https://github.com/diksown/musa/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/diksown/musa?color=fcf&style=flat-square">
+      <img src="https://img.shields.io/github/license/diksown/musa?color=ffccff&style=flat-square">
     </a>
     <a href="https://github.com/diksown/musa/stargazers">
-      <img src="https://img.shields.io/github/stars/diksown/musa?color=fcf&style=flat-square">
+      <img src="https://img.shields.io/github/stars/diksown/musa?color=ffccff&style=flat-square">
     </a>
   </div>
 
