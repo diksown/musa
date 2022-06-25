@@ -46,3 +46,5 @@ This repo also has a CLI (called **musag**) for generating your own projects —
 ## Contributing
 
 Musa is open source! For more info about how to contribute, including how to report projects and showcase your Musa-inspired project, check the [contribution guidelines](https://github.com/diksown/musa/blob/main/.github/CONTRIBUTING.md#contributing).
+
+<!-- -->
