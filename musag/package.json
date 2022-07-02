@@ -1,6 +1,6 @@
 {
   "name": "musag",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI for generating programming project ideas with GPT3",
   "type": "module",
   "author": {
