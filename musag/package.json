@@ -3,13 +3,22 @@
   "version": "1.0.2",
   "description": "CLI for generating programming project ideas with GPT3",
   "type": "module",
+  "author": {
+    "name": "Dikson Santos",
+    "email": "diksonfer@gmail.com",
+    "url": "https://dikson.xyz"
+  },
+  "homepage": "https://musa.dikson.xyz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diksown/musa.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
   "bin": {
     "musag": "bin/index.js"
   },
-  "author": "Dikson Santos",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.0.1",
