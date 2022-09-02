@@ -31,10 +31,10 @@ Musa (_muse_, in Portuguese) is a website that displays a collection of programm
 <b>🔮 Choose your project. Make it yours.</b>  
 <i>+2.5k project ideas to choose from.</i>
 
-<b>⛑️ Naming things is hard. Let Musa help.</b>  
+<b>🛟 Naming things is hard. Let Musa help.</b>  
 <i>Creative title suggestions in each card.</i>
 
-<b>💡 New ideas, right at your fingertips.</b>  
+<b>⏩ New ideas, right at your fingertips.</b>  
 <i>Tap a card to get a new one. As easy as it gets.</i>
 
 <p align="center"><i>See project ideas on <a href="https://musa.dikson.xyz">musa.dikson.xyz →</a></i></p>
